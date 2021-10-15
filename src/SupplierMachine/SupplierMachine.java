@@ -7,6 +7,6 @@ import java.rmi.RemoteException;
 
 public class SupplierMachine {
     public static void main(String[] args) throws MalformedURLException, NotBoundException, RemoteException {
-        SupplierInterface supplierInterface = (SupplierInterface) Naming.lookup("rmi://localhost:5050/Server");
+        SupplierInterface supplierInterface = (SupplierInterface) Naming.lookup("rmi://localhost:5050/Connect");
     }
 }
