@@ -7,6 +7,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Server extends UnicastRemoteObject implements ClientInterface, SupplierInterface {
     public Server()throws RemoteException{
@@ -32,7 +33,7 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
 
     //Supplier methods:
 
-    public ArrayList<Item> sViewItem(int userID) {
+    public HashMap<Integer, Item> sViewItem(int userID) {
         return null;
     }
 
