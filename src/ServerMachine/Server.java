@@ -22,7 +22,7 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         //After creating a method, create an empty version of the method at ServerInterface.
     }
 
-    public ArrayList<Item> cViewItem() {
+    public HashMap<Integer, Item> cViewItem() {
         return null;
     }
 

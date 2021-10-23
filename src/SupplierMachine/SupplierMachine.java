@@ -11,11 +11,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class SupplierMachine {
-    static SupplierInterface supplierInterface;
+    private static SupplierInterface supplierInterface;
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
         try{
             supplierInterface = (SupplierInterface) Naming.lookup("rmi://localhost:5050/Connect");
         }catch (Exception e){
@@ -33,7 +32,7 @@ public class SupplierMachine {
             //Check user credential here, if account exist the user account is returned and shown here
         }
 
-        System.out.println("Welcome, "+"user");
+        System.out.println("Welcome, "+"user");  //replace with username
 
         boolean x = true;
         while(x) {
@@ -61,7 +60,7 @@ public class SupplierMachine {
                         System.out.println("\n\nID: "+selectedItem.getItemID()
                                 +"\nName: "+selectedItem.getItemName()
                                 +"\nQuantity: "+selectedItem.getItemQuantity());
-                        System.out.println("\n1. Edit name\n2. Edit quantity\n3. Delete item\n4. Back\n");
+                        System.out.println("\n1. Edit name\n2. Edit quantity\n3. Delete item\n4. Back\n\n");
                         System.out.print("Option: ");
 
                         option = scanner.nextInt();
