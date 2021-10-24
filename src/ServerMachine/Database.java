@@ -3,19 +3,18 @@ package ServerMachine;
 import java.sql.*;
 
 public class Database {
+    static String url = "jdbc:sqlite:dcoms.db";
+
     public static void main(String[] args) {
         Database database = new Database();
-        //createNewDatabase("DCOMS_DB");
-        //databaseConnectCheck();
-        //createNewTable();
-        //database.insertClient("June","321");
+        createNewDatabase();
+        databaseConnectCheck();
+        createNewTable();
+        database.insertClient("June","321");
         database.clientSelectAll();
     }
 
-    public static void createNewDatabase(String fileName) {
-        //The file directory/location for where you want to store the database.
-        String url = "jdbc:sqlite:D:\\Program Files\\SQLite\\db\\" + fileName;
-
+    public static void createNewDatabase() {
         try (Connection conn = DriverManager.getConnection(url)) {
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
@@ -30,8 +29,6 @@ public class Database {
     public static void databaseConnectCheck() {
         Connection conn = null;
         try {
-            // db parameters
-            String url = "jdbc:sqlite:D:\\Program Files\\SQLite\\db\\DCOMS_DB";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
@@ -50,9 +47,6 @@ public class Database {
         }
     }
     public static void createNewTable() {
-        // SQLite connection string
-        String url = "jdbc:sqlite:D:\\Program Files\\SQLite\\db\\DCOMS_DB";
-
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS ClientTable (\n"
                 + "	userID integer PRIMARY KEY,\n"
@@ -126,8 +120,6 @@ public class Database {
     }
 
     private Connection connect() {
-        // SQLite connection string
-        String url = "jdbc:sqlite:D:\\Program Files\\SQLite\\db\\DCOMS_DB";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
