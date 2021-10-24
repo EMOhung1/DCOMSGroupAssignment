@@ -7,11 +7,11 @@ public class Database {
 
     public static void main(String[] args) {
         Database database = new Database();
-        createNewDatabase();
-        databaseConnectCheck();
-        createNewTable();
-        database.insertClient("June","321");
-        database.clientSelectAll();
+        //createNewDatabase(); Not needed
+        //databaseConnectCheck(); Not needed
+        //createNewTable();
+        //database.insertClient("June","321");
+        //database.clientSelectAll();
     }
 
     public static void createNewDatabase() {
