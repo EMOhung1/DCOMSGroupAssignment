@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="SQLite">
+    <CLASSES />
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://D:/Program Files/SQLite" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>
