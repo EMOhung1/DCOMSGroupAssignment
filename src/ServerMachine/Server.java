@@ -8,8 +8,12 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Server extends UnicastRemoteObject implements ClientInterface, SupplierInterface {
+    private static final Logger logger = Logger.getLogger(Server.class.getName());  //logger
+
     public Server()throws RemoteException{
         super();
     }

@@ -1,8 +1,11 @@
 package ServerMachine;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Database {
+    private static final Logger logger = Logger.getLogger(Database.class.getName());  //logger
     static String url = "jdbc:sqlite:dcoms.db";
 
     public static void init() {
@@ -23,8 +26,8 @@ public class Database {
                 + "	itemID integer PRIMARY KEY,\n"
                 + "	itemQuantity integer,\n"
                 + "	itemName varchar,\n"
-                + "	userID integer,\n"
-                + "	FOREIGN KEY(userID) REFERENCES SupplierTable(userID)\n"
+                + "	supplierID integer,\n"
+                + "	FOREIGN KEY(supplierID) REFERENCES SupplierTable(userID)\n"
                 + ");";
 
         String order = "CREATE TABLE IF NOT EXISTS OrderTable (\n"
@@ -45,8 +48,8 @@ public class Database {
         try (Connection conn = connect()) {
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
+                //System.out.println("The driver name is " + meta.getDriverName());
+                //System.out.println("A new database has been created.");
 
                 Statement stmt = conn.createStatement();
                 stmt.execute(client);
@@ -55,9 +58,11 @@ public class Database {
                 stmt.execute(order);
                 stmt.execute(orderItem);
             }
+            logger.log(Level.INFO, "Database initialized successfully");
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, "Database initialization failed!", e);
+            //System.out.println(e.getMessage());
         }
     }
 
