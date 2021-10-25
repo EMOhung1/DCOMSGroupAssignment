@@ -5,16 +5,7 @@ import java.sql.*;
 public class Database {
     static String url = "jdbc:sqlite:dcoms.db";
 
-    public static void main(String[] args) {
-        Database database = new Database();
-        //createNewDatabase(); Not needed
-        //databaseConnectCheck(); Not needed
-        //createNewTable();
-        //database.insertClient("June","321");
-        //database.clientSelectAll();
-    }
-
-    public static void createNewDatabase() {
+    public static void init() {
         try (Connection conn = DriverManager.getConnection(url)) {
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
