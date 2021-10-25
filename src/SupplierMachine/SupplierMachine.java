@@ -14,6 +14,9 @@ public class SupplierMachine {
     private static SupplierInterface supplierInterface;
     private static final Scanner scanner = new Scanner(System.in);
 
+    private static String currentUsername;
+    private static String currentPassword;
+
     public static void main(String[] args) {
         try{
             supplierInterface = (SupplierInterface) Naming.lookup("rmi://localhost:5050/Connect");
@@ -28,11 +31,25 @@ public class SupplierMachine {
 
         if(username.equals("0") && password.equals("0")){
             //Run the register method here
+            System.out.println("New Supplier Registration:\n\nUsername:\nPassword");
+            String newUsername = scanner.nextLine();
+            String newPassword = scanner.nextLine();
+
+            try {
+                supplierInterface.supplierInsert(newUsername, newPassword);
+
+            }catch(Exception ex){System.out.println(ex.getMessage());};
+            currentUsername = newUsername;
+            currentPassword = newUsername;
+
         }else{
             //Check user credential here, if account exist the user account is returned and shown here
+            currentUsername = username;
+            currentPassword = password;
         }
 
-        System.out.println("Welcome, "+"user");  //replace with username
+
+        System.out.println("Welcome, "+ currentUsername);  //replace with username
 
         boolean x = true;
         while(x) {

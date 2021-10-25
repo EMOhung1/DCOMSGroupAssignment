@@ -22,6 +22,16 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         //After creating a method, create an empty version of the method at ServerInterface.
     }
 
+    public void clientInsert(String userName, String password){
+        Database database = new Database();
+        database.insertClient(userName,password);
+    }
+
+    public void supplierInsert(String userName, String password){
+        Database database = new Database();
+        database.insertSupplier(userName,password);
+    }
+
     public HashMap<Integer, Item> cViewItem() {
         return null;
     }

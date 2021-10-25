@@ -12,6 +12,7 @@ public class Database {
         //createNewTable();
         //database.insertClient("June","321");
         //database.clientSelectAll();
+        database.supplierSelectAll();
     }
 
     public static void createNewDatabase() {
@@ -103,6 +104,24 @@ public class Database {
 
     public void clientSelectAll(){
         String sql = "SELECT userID, userName, password FROM ClientTable";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getInt("userID") +  "\t" +
+                        rs.getString("userName") + "\t" +
+                        rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void supplierSelectAll(){
+        String sql = "SELECT userID, userName, password FROM SupplierTable";
 
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();

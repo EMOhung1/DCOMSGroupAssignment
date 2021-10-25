@@ -6,12 +6,18 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.Scanner;
 
 public class ClientMachine {
     private static ClientInterface clientInterface;
     private static final Scanner scanner = new Scanner(System.in);
+
+    private static String currentUsername;
+    private static String currentPassword;
 
     public static void main(String[] args){
         try{
@@ -27,11 +33,24 @@ public class ClientMachine {
 
         if(username.equals("0") && password.equals("0")){
             //Run the register method here
+            System.out.println("New Customer Registration:\n\nUsername:\nPassword");
+            String newUsername = scanner.nextLine();
+            String newPassword = scanner.nextLine();
+
+            try {
+                clientInterface.clientInsert(newUsername, newPassword);
+            }catch(Exception ex){System.out.println(ex.getMessage());};
+
+            currentUsername = newUsername;
+            currentPassword = newUsername;
+
         }else{
             //Check user credential here, if account exist the user account is returned and shown here
+            currentUsername = username;
+            currentPassword = password;
         }
 
-        System.out.println("Welcome, "+"user");  //replace with username
+        System.out.println("Welcome, "+ currentUsername);  //replace with username
 
         boolean x = true;
         while(x) {
