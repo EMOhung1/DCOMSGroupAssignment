@@ -3,9 +3,9 @@ package ServerMachine;
 import java.io.Serializable;
 
 public class Client implements Serializable {
-    public int userId;
-    public String userName;
-    public String password;
+    private int userId;
+    private String userName;
+    private String password;
 
     public Client(int userId, String userName, String password){
         this.userId = userId;

@@ -3,9 +3,9 @@ package ServerMachine;
 import java.io.Serializable;
 
 public class Supplier implements Serializable {
-    public int supplierId;
-    public String userName;
-    public String password;
+    private int supplierId;
+    private String userName;
+    private String password;
 
     public Supplier(int supplierId, String userName, String password){
         this.supplierId = supplierId;

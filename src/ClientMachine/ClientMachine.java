@@ -44,7 +44,7 @@ public class ClientMachine {
                     clientInterface.clientInsert(newUsername, newPassword);
                     currentClient = clientInterface.clientLogin(newUsername,newPassword);
 
-                    if(currentClient.userName != null && currentClient.password != null){
+                    if(currentClient.getUserName() != null && currentClient.getPassword() != null){
                         loggedIn = true;
                     }
                     else{
@@ -57,7 +57,7 @@ public class ClientMachine {
                 //Check user credential here, if account exist the user account is returned and shown here
                 try {
                     currentClient = clientInterface.clientLogin(username,password);
-                    if(currentClient.userName != null && currentClient.password != null){
+                    if(currentClient.getUserName() != null && currentClient.getPassword() != null){
                         loggedIn = true;
                     }
                     else{
@@ -68,7 +68,7 @@ public class ClientMachine {
         }
 
 
-        System.out.println("Welcome, "+ currentClient.userName);  //replace with username
+        System.out.println("Welcome, "+ currentClient.getUserName());  //replace with username
 
         boolean x = true;
         while(x) {

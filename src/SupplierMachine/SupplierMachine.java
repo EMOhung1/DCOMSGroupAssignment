@@ -42,7 +42,7 @@ public class SupplierMachine {
                 try {
                     supplierInterface.supplierInsert(newUsername, newPassword);
                     currentSupplier = supplierInterface.supplierLogin(newUsername,newPassword);
-                    if(currentSupplier.userName != null && currentSupplier.password != null){
+                    if(currentSupplier.getuserName() != null && currentSupplier.getPassword() != null){
                         loggedIn = true;
                     }
                     else{
@@ -54,7 +54,7 @@ public class SupplierMachine {
                 //Check user credential here, if account exist the user account is returned and shown here
                 try {
                     currentSupplier = supplierInterface.supplierLogin(username,password);
-                    if(currentSupplier.userName != null && currentSupplier.password != null){
+                    if(currentSupplier.getuserName() != null && currentSupplier.getPassword() != null){
                         loggedIn = true;
                     }
                     else{
@@ -64,7 +64,7 @@ public class SupplierMachine {
             }
         }
 
-        System.out.println("Welcome, "+ currentSupplier.userName);  //replace with username
+        System.out.println("Welcome, "+ currentSupplier.getuserName());  //replace with username
 
         boolean x = true;
         while(x) {

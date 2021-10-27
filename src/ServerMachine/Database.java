@@ -13,7 +13,7 @@ public class Database {
         //createNewTable();
         //database.insertClient("June","321");
         //database.clientSelectAll();
-        //database.supplierSelectAll();
+        database.supplierSelectAll();
         //database.clientSearch("tai","456");
     }
 
