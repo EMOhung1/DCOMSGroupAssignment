@@ -1,5 +1,6 @@
 package ServerMachine;
 
+import java.io.Serializable;
 import java.sql.*;
 
 public class Database {
@@ -12,7 +13,8 @@ public class Database {
         //createNewTable();
         //database.insertClient("June","321");
         //database.clientSelectAll();
-        database.supplierSelectAll();
+        //database.supplierSelectAll();
+        //database.clientSearch("tai","456");
     }
 
     public static void createNewDatabase() {
@@ -118,6 +120,54 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public Client clientSearch(String userName, String password){
+        String sql = "SELECT userID, userName, password FROM ClientTable WHERE userName ='" + userName + "' AND password ='" + password+"'";
+
+        int id = 0;
+        String name = null;
+        String pswd = null;
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                    name = rs.getString("userName");
+                    pswd = rs.getString("password");
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        Client currentClient = new Client(id, name, pswd);
+        return currentClient;
+    }
+
+    public Supplier supplierSearch(String userName, String password){
+        String sql = "SELECT userID, userName, password FROM SupplierTable WHERE userName ='" + userName + "' AND password ='" + password+"'";
+
+        int id = 0;
+        String name = null;
+        String pswd = null;
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                name = rs.getString("userName");
+                pswd = rs.getString("password");
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        Supplier currentSupplier = new Supplier(id, name, pswd);
+        return currentSupplier;
     }
 
     public void supplierSelectAll(){

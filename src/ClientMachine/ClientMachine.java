@@ -1,7 +1,9 @@
 package ClientMachine;
 
+import ServerMachine.Client;
 import ServerMachine.Item;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -15,9 +17,9 @@ import java.util.Scanner;
 public class ClientMachine {
     private static ClientInterface clientInterface;
     private static final Scanner scanner = new Scanner(System.in);
+    private static boolean loggedIn = false;
 
-    private static String currentUsername;
-    private static String currentPassword;
+    private static Client currentClient;
 
     public static void main(String[] args){
         try{
@@ -26,31 +28,47 @@ public class ClientMachine {
             System.out.println(e+"\n");
         }
 
-        System.out.println("Welcome to CKFC Delivery System!\n\nUsername:\nPassword:\n\nDo not have an account? Register now by typing 0 in both Username and Password.");
+        while(!loggedIn){
+            System.out.println("Welcome to CKFC Delivery System!\n\nUsername:\nPassword:\n\nDo not have an account? Register now by typing 0 in both Username and Password.");
 
-        String username = scanner.nextLine();
-        String password = scanner.nextLine();
+            String username = scanner.nextLine();
+            String password = scanner.nextLine();
 
-        if(username.equals("0") && password.equals("0")){
-            //Run the register method here
-            System.out.println("New Customer Registration:\n\nUsername:\nPassword");
-            String newUsername = scanner.nextLine();
-            String newPassword = scanner.nextLine();
+            if(username.equals("0") && password.equals("0")){
+                //Run the register method here
+                System.out.println("New Customer Registration:\n\nUsername:\nPassword");
+                String newUsername = scanner.nextLine();
+                String newPassword = scanner.nextLine();
 
-            try {
-                clientInterface.clientInsert(newUsername, newPassword);
-            }catch(Exception ex){System.out.println(ex.getMessage());};
+                try {
+                    clientInterface.clientInsert(newUsername, newPassword);
+                    currentClient = clientInterface.clientLogin(newUsername,newPassword);
 
-            currentUsername = newUsername;
-            currentPassword = newUsername;
+                    if(currentClient.userName != null && currentClient.password != null){
+                        loggedIn = true;
+                    }
+                    else{
+                        System.out.println("Invalid Login Credentials");
+                    }
 
-        }else{
-            //Check user credential here, if account exist the user account is returned and shown here
-            currentUsername = username;
-            currentPassword = password;
+                }catch(Exception ex){System.out.println(ex.getMessage());};
+
+            }else{
+                //Check user credential here, if account exist the user account is returned and shown here
+                try {
+                    currentClient = clientInterface.clientLogin(username,password);
+                    if(currentClient.userName != null && currentClient.password != null){
+                        loggedIn = true;
+                    }
+                    else{
+                        System.out.println("Invalid Login Credentials");
+                    }
+                }catch(Exception ex){System.out.println(ex.getMessage());};
+            }
         }
 
-        System.out.println("Welcome, "+ currentUsername);  //replace with username
+
+        System.out.println("Welcome, "+ currentClient.userName);  //replace with username
 
         boolean x = true;
         while(x) {

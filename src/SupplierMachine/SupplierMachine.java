@@ -1,7 +1,9 @@
 package SupplierMachine;
 
 import ClientMachine.ClientInterface;
+import ServerMachine.Client;
 import ServerMachine.Item;
+import ServerMachine.Supplier;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -14,8 +16,9 @@ public class SupplierMachine {
     private static SupplierInterface supplierInterface;
     private static final Scanner scanner = new Scanner(System.in);
 
-    private static String currentUsername;
-    private static String currentPassword;
+    private static Supplier currentSupplier;
+
+    private static boolean loggedIn = false;
 
     public static void main(String[] args) {
         try{
@@ -24,32 +27,44 @@ public class SupplierMachine {
             System.out.println(e+"\n");
         }
 
-        System.out.println("Welcome to CKFC Delivery System!\n\nUsername:\nPassword:\n\nDo not have an account? Register now by typing 0 in both Username and Password.");
+        while(!loggedIn){
+            System.out.println("Welcome to CKFC Delivery System!\n\nUsername:\nPassword:\n\nDo not have an account? Register now by typing 0 in both Username and Password.");
 
-        String username = scanner.nextLine();
-        String password = scanner.nextLine();
+            String username = scanner.nextLine();
+            String password = scanner.nextLine();
 
-        if(username.equals("0") && password.equals("0")){
-            //Run the register method here
-            System.out.println("New Supplier Registration:\n\nUsername:\nPassword");
-            String newUsername = scanner.nextLine();
-            String newPassword = scanner.nextLine();
+            if(username.equals("0") && password.equals("0")){
+                //Run the register method here
+                System.out.println("New Supplier Registration:\n\nUsername:\nPassword");
+                String newUsername = scanner.nextLine();
+                String newPassword = scanner.nextLine();
 
-            try {
-                supplierInterface.supplierInsert(newUsername, newPassword);
+                try {
+                    supplierInterface.supplierInsert(newUsername, newPassword);
+                    currentSupplier = supplierInterface.supplierLogin(newUsername,newPassword);
+                    if(currentSupplier.userName != null && currentSupplier.password != null){
+                        loggedIn = true;
+                    }
+                    else{
+                        System.out.println("Invalid Login Credentials");
+                    }
+                }catch(Exception ex){System.out.println(ex.getMessage());};
 
-            }catch(Exception ex){System.out.println(ex.getMessage());};
-            currentUsername = newUsername;
-            currentPassword = newUsername;
-
-        }else{
-            //Check user credential here, if account exist the user account is returned and shown here
-            currentUsername = username;
-            currentPassword = password;
+            }else{
+                //Check user credential here, if account exist the user account is returned and shown here
+                try {
+                    currentSupplier = supplierInterface.supplierLogin(username,password);
+                    if(currentSupplier.userName != null && currentSupplier.password != null){
+                        loggedIn = true;
+                    }
+                    else{
+                        System.out.println("Invalid Login Credentials");
+                    }
+                }catch(Exception ex){System.out.println(ex.getMessage());};
+            }
         }
 
-
-        System.out.println("Welcome, "+ currentUsername);  //replace with username
+        System.out.println("Welcome, "+ currentSupplier.userName);  //replace with username
 
         boolean x = true;
         while(x) {
