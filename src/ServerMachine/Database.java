@@ -100,7 +100,7 @@ public class Database {
     public static void clientSelectAll(){
         String sql = "SELECT userID, userName, password FROM ClientTable";
 
-        try (Connection conn = this.connect();
+        try (Connection conn = connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
 
@@ -122,7 +122,7 @@ public class Database {
         String name = null;
         String pswd = null;
 
-        try (Connection conn = this.connect();
+        try (Connection conn = connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
 
@@ -135,8 +135,8 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        Client currentClient = new Client(id, name, pswd);
-        return currentClient;
+
+        return new Client(id, name, pswd);
     }
 
     public Supplier supplierSearch(String userName, String password){
@@ -146,7 +146,7 @@ public class Database {
         String name = null;
         String pswd = null;
 
-        try (Connection conn = this.connect();
+        try (Connection conn = connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
 
@@ -159,14 +159,14 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        Supplier currentSupplier = new Supplier(id, name, pswd);
-        return currentSupplier;
+
+        return new Supplier(id, name, pswd);
     }
 
     public void supplierSelectAll(){
         String sql = "SELECT userID, userName, password FROM SupplierTable";
 
-        try (Connection conn = this.connect();
+        try (Connection conn = connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
 
