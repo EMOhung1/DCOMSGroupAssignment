@@ -27,22 +27,12 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         //After creating a method, create an empty version of the method at ServerInterface.
     }
 
-    public Supplier supplierLogin(String supplierName, String password){
-        return Database.supplierSearch(supplierName,password);
-        //You need to return the user object saved, so when James login it returns James' account and not someone else, this is an example.
-        //After creating a method, create an empty version of the method at ServerInterface.
-    }
-
     public void clientInsert(String userName, String password){
         Database.insertClient(userName,password);
     }
 
-    public void supplierInsert(String userName, String password){
-        Database.insertSupplier(userName,password);
-    }
-
     public HashMap<Integer, Item> cViewItem() {
-        return null;
+        return Database.getItems();
     }
 
     public Order purchaseItem() {
@@ -52,8 +42,18 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
 
     //Supplier methods:
 
+    public Supplier supplierLogin(String supplierName, String password){
+        return Database.supplierSearch(supplierName,password);
+        //You need to return the user object saved, so when James login it returns James' account and not someone else, this is an example.
+        //After creating a method, create an empty version of the method at ServerInterface.
+    }
+
+    public void supplierInsert(String userName, String password){
+        Database.insertSupplier(userName,password);
+    }
+
     public HashMap<Integer, Item> sViewItem(int userID) {
-        return null;
+        return Database.getItems(userID);
     }
 
 }

@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -83,11 +84,22 @@ public class SupplierMachine {
                         case 1:
                             Item selectedItem;
                             try {
-                                for (Map.Entry<Integer, Item> e : supplierInterface.sViewItem(0).entrySet()) {  //replace with user id
+                                HashMap<Integer, Item> items = supplierInterface.sViewItem(currentSupplier.getSupplierId());
+                                if(items.isEmpty()) {
+                                    System.out.println("No items found!");
+                                    break;
+                                }
+                                for (Map.Entry<Integer, Item> e : items.entrySet()) {
                                     System.out.println(e.getKey() + ". " + e.getValue().getItemName());
                                 }
                                 System.out.print("\nOption: ");
-                                selectedItem = supplierInterface.sViewItem(0).get(scanner.nextInt());  //replace with user id
+                                int itemID = scanner.nextInt();
+                                if(items.containsKey(itemID)) {
+                                    selectedItem = items.get(itemID);
+                                } else {
+                                    System.out.println("ItemID does not exist!");
+                                    break;
+                                }
                             } catch (Exception e) {
                                 System.out.println(e + "\n");
                                 break;

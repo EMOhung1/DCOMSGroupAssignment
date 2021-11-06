@@ -2,6 +2,7 @@ package ServerMachine;
 
 import java.io.Serializable;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -128,6 +129,7 @@ public class Database {
 
             // loop through the result set
             while (rs.next()) {
+                    id = rs.getInt("userID");
                     name = rs.getString("userName");
                     pswd = rs.getString("password");
 
@@ -152,6 +154,7 @@ public class Database {
 
             // loop through the result set
             while (rs.next()) {
+                id = rs.getInt("userID");
                 name = rs.getString("userName");
                 pswd = rs.getString("password");
 
@@ -180,6 +183,37 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    public static HashMap<Integer, Item> getItems(int supplierID) {
+        String sql = "SELECT * FROM ItemTable LEFT JOIN SupplierTable ON ItemTable.supplierID = SupplierTable.userID";
+        HashMap<Integer, Item> items = new HashMap<>();
+
+        try (Connection conn = connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                if(supplierID != -1 && rs.getInt("supplierID") != supplierID) {
+                    continue;
+                }
+                Item item = new Item(rs.getInt("itemID"),
+                        rs.getInt("itemQuantity"),
+                        rs.getString("itemName"),
+                        rs.getString("userName"));
+                items.put(item.getItemID(), item);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return items;
+    }
+
+    public static HashMap<Integer, Item> getItems() {
+        return getItems(-1);
+    }
+
 
     private static Connection connect() {
         Connection conn = null;

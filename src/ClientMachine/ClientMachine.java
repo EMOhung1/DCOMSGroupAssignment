@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -89,17 +90,26 @@ public class ClientMachine {
                         case 2:
                             Item selectedItem;
                             try {
-                                for (Map.Entry<Integer, Item> e : clientInterface.cViewItem().entrySet()) {  //replace with user id
+                                HashMap<Integer, Item> items = clientInterface.cViewItem();
+                                if(items.isEmpty()) {
+                                    System.out.println("No items found!");
+                                    break;
+                                }
+                                for (Map.Entry<Integer, Item> e : items.entrySet()) {
                                     System.out.println(e.getKey() + ". " + e.getValue().getItemName());
                                 }
                                 System.out.print("\nOption: ");
-                                selectedItem = clientInterface.cViewItem().get(scanner.nextInt());  //replace with user id
+                                int itemID = scanner.nextInt();
+                                if(items.containsKey(itemID)) {
+                                    itemMenu(items.get(itemID));
+                                } else {
+                                    System.out.println("ItemID does not exist!");
+                                }
+
                             } catch (Exception e) {
                                 System.out.println(e + "\n");
                                 break;
                             }
-
-                            itemMenu(selectedItem);
                             break;
                         case 3:
                             //view cart
@@ -123,6 +133,7 @@ public class ClientMachine {
         while(y) {
             System.out.println("\n\nID: "+item.getItemID()
                     +"\nName: "+item.getItemName()
+                    +"\nSupplier: "+item.getSupplierName()
                     +"\nQuantity: "+item.getItemQuantity());
             System.out.println("\n1. Add to cart\n2. Buy now\n3. Back\n\n");
             System.out.print("Option: ");
