@@ -219,10 +219,12 @@ public class Database {
     public static void insertOrder(Client client, String address, HashMap<Item, Integer> cart) {
         String orderStmt = "INSERT INTO OrderTable(creationDate, address, clientID) VALUES(?,?,?)";
         String itemStmt = "INSERT INTO OrderItemTable(orderID, itemID, quantity) VALUES(?,?,?)";
+        String qtyStmt = "UPDATE ItemTable SET itemQuantity = ? WHERE itemID = ?";
 
         try (Connection conn = connect();
              PreparedStatement orderPstmt = conn.prepareStatement(orderStmt);
-             PreparedStatement itemPstmt = conn.prepareStatement(itemStmt)) {
+             PreparedStatement itemPstmt = conn.prepareStatement(itemStmt);
+             PreparedStatement qtyPstmt = conn.prepareStatement(qtyStmt)) {
 
             orderPstmt.setString(1, System.currentTimeMillis()+"");
             orderPstmt.setString(2, address);
@@ -235,6 +237,11 @@ public class Database {
                 itemPstmt.setInt(2, item.getKey().getItemID());
                 itemPstmt.setInt(3, item.getValue());
                 itemPstmt.executeUpdate();
+
+                //update item quantity
+                qtyPstmt.setInt(1, item.getKey().getItemQuantity() - item.getValue());
+                qtyPstmt.setInt(2, item.getKey().getItemID());
+                qtyPstmt.executeUpdate();
             }
 
         } catch (SQLException e) {

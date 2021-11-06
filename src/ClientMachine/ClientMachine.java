@@ -164,6 +164,12 @@ public class ClientMachine {
                                     } catch (Exception e) {
                                         System.out.println(e + "\n");
                                     }
+                                } else {
+                                    System.out.print("\nClear cart? (y/n): ");
+                                    String clear = scanner.nextLine();
+                                    if(clear.equals("y")) {
+                                        cart = new HashMap<>();
+                                    }
                                 }
                             } else {
                                 System.out.println("Cart is empty!");
@@ -200,7 +206,11 @@ public class ClientMachine {
                     //add to cart
                     System.out.print("Quantity: ");
                     int qty = scanner.nextInt();
-                    cart.put(item, cart.getOrDefault(item, 0) + qty);
+                    if(qty > item.getItemQuantity() || (cart.containsKey(item) && qty+cart.get(item) > item.getItemQuantity())) {
+                        System.out.println("Quantity exceeds available item quantity!");
+                    } else {
+                        cart.put(item, cart.getOrDefault(item, 0) + qty);
+                    }
                     y = false;
                     break;
                 case 2:

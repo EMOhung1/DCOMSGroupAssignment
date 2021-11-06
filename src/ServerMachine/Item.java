@@ -37,4 +37,26 @@ public class Item implements Serializable {
     public String getSupplierName() {
         return supplierName;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        final Item other = (Item) o;
+        if (this.itemID != other.itemID) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + this.itemID;
+        return hash;
+    }
 }
