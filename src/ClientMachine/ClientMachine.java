@@ -29,15 +29,20 @@ public class ClientMachine {
         }
 
         while(!loggedIn){
-            System.out.println("Welcome to CKFC Delivery System!\n\nUsername:\nPassword:\n\nDo not have an account? Register now by typing 0 in both Username and Password.");
+            System.out.println("\nWelcome to CKFC Delivery System!\nDo not have an account? Register now by typing 0 in both Username and Password.\nType -1 in both Username and Password to exit.\n");
 
+            System.out.print("Username: ");
             String username = scanner.nextLine();
+            System.out.print("Password: ");
             String password = scanner.nextLine();
 
             if(username.equals("0") && password.equals("0")){
                 //Run the register method here
-                System.out.println("New Customer Registration:\n\nUsername:\nPassword");
+                System.out.println("New Customer Registration:\n");
+
+                System.out.print("Username: ");
                 String newUsername = scanner.nextLine();
+                System.out.print("Password: ");
                 String newPassword = scanner.nextLine();
 
                 try {
@@ -48,11 +53,13 @@ public class ClientMachine {
                         loggedIn = true;
                     }
                     else{
-                        System.out.println("Invalid Login Credentials");
+                        System.out.println("\nInvalid Login Credentials\n");
                     }
 
-                }catch(Exception ex){System.out.println(ex.getMessage());};
+                }catch(Exception ex){System.out.println(ex.getMessage());}
 
+            } else if(username.equals("-1") && password.equals("-1")) {
+                return;
             }else{
                 //Check user credential here, if account exist the user account is returned and shown here
                 try {
@@ -61,51 +68,52 @@ public class ClientMachine {
                         loggedIn = true;
                     }
                     else{
-                        System.out.println("Invalid Login Credentials");
+                        System.out.println("\nInvalid Login Credentials\n");
                     }
-                }catch(Exception ex){System.out.println(ex.getMessage());};
+                }catch(Exception ex){System.out.println(ex.getMessage());}
             }
-        }
 
+            if(loggedIn) {
+                System.out.println("Welcome, " + currentClient.getUserName());  //replace with username
 
-        System.out.println("Welcome, "+ currentClient.getUserName());  //replace with username
+                while(loggedIn) {
+                    System.out.println("\n1. Search items\n2. View all items\n3. View cart\n4. View orders\n5. Logout\n\n");
+                    System.out.print("Option: ");
 
-        boolean x = true;
-        while(x) {
-            System.out.println("\n1. Search items\n2. View all items\n3.View cart\n4.View orders\n5. Logout\n\n");
-            System.out.print("Option: ");
+                    int option = scanner.nextInt();
 
-            int option = scanner.nextInt();
+                    switch (option) {
+                        case 1:
+                            //search items
+                            break;
+                        case 2:
+                            Item selectedItem;
+                            try {
+                                for (Map.Entry<Integer, Item> e : clientInterface.cViewItem().entrySet()) {  //replace with user id
+                                    System.out.println(e.getKey() + ". " + e.getValue().getItemName());
+                                }
+                                System.out.print("\nOption: ");
+                                selectedItem = clientInterface.cViewItem().get(scanner.nextInt());  //replace with user id
+                            } catch (Exception e) {
+                                System.out.println(e + "\n");
+                                break;
+                            }
 
-            switch(option) {
-                case 1:
-                    //search items
-                    break;
-                case 2:
-                    Item selectedItem;
-                    try {
-                        for(Map.Entry<Integer, Item> e: clientInterface.cViewItem().entrySet()) {  //replace with user id
-                            System.out.println(e.getKey()+". "+e.getValue().getItemName());
-                        }
-                        System.out.print("\nOption: ");
-                        selectedItem = clientInterface.cViewItem().get(scanner.nextInt());  //replace with user id
-                    } catch(Exception e) {
-                        System.out.println(e+"\n");
-                        break;
+                            itemMenu(selectedItem);
+                            break;
+                        case 3:
+                            //view cart
+                            break;
+                        case 4:
+                            //view orders
+                            break;
+                        case 5:
+                            scanner.nextLine();
+                            currentClient = null;
+                            loggedIn = false;
+                            break;
                     }
-
-                    itemMenu(selectedItem);
-                    break;
-                case 3:
-                    //view cart
-                    break;
-                case 4:
-                    //view orders
-                    break;
-                case 5:
-                    //logout code here
-                    x = false;
-                    break;
+                }
             }
         }
     }

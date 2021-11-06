@@ -28,15 +28,20 @@ public class SupplierMachine {
         }
 
         while(!loggedIn){
-            System.out.println("Welcome to CKFC Delivery System!\n\nUsername:\nPassword:\n\nDo not have an account? Register now by typing 0 in both Username and Password.");
+            System.out.println("\nWelcome to CKFC Delivery System!\nDo not have an account? Register now by typing 0 in both Username and Password.\nType -1 in both Username and Password to exit.\n");
 
+            System.out.print("Username: ");
             String username = scanner.nextLine();
+            System.out.print("Password: ");
             String password = scanner.nextLine();
 
             if(username.equals("0") && password.equals("0")){
                 //Run the register method here
-                System.out.println("New Supplier Registration:\n\nUsername:\nPassword");
+                System.out.println("New Supplier Registration:\n");
+
+                System.out.print("Username: ");
                 String newUsername = scanner.nextLine();
+                System.out.print("Password: ");
                 String newPassword = scanner.nextLine();
 
                 try {
@@ -46,10 +51,12 @@ public class SupplierMachine {
                         loggedIn = true;
                     }
                     else{
-                        System.out.println("Invalid Login Credentials");
+                        System.out.println("\nInvalid Login Credentials\n");
                     }
-                }catch(Exception ex){System.out.println(ex.getMessage());};
+                }catch(Exception ex){System.out.println(ex.getMessage());}
 
+            } else if(username.equals("-1") && password.equals("-1")) {
+                return;
             }else{
                 //Check user credential here, if account exist the user account is returned and shown here
                 try {
@@ -58,68 +65,70 @@ public class SupplierMachine {
                         loggedIn = true;
                     }
                     else{
-                        System.out.println("Invalid Login Credentials");
+                        System.out.println("\nInvalid Login Credentials\n");
                     }
-                }catch(Exception ex){System.out.println(ex.getMessage());};
+                }catch(Exception ex){System.out.println(ex.getMessage());}
             }
-        }
 
-        System.out.println("Welcome, "+ currentSupplier.getuserName());  //replace with username
+            if(loggedIn) {
+                System.out.println("Welcome, " + currentSupplier.getuserName());  //replace with username
 
-        boolean x = true;
-        while(x) {
-            System.out.println("\n1. View items\n2. View orders\n3.Logout\n\n");
-            System.out.print("Option: ");
+                while (loggedIn) {
+                    System.out.println("\n1. View items\n2. View orders\n3. Logout\n\n");
+                    System.out.print("Option: ");
 
-            int option = scanner.nextInt();
+                    int option = scanner.nextInt();
 
-            switch(option) {
-                case 1:
-                    Item selectedItem;
-                    try {
-                        for(Map.Entry<Integer, Item> e: supplierInterface.sViewItem(0).entrySet()) {  //replace with user id
-                            System.out.println(e.getKey()+". "+e.getValue().getItemName());
-                        }
-                        System.out.print("\nOption: ");
-                        selectedItem = supplierInterface.sViewItem(0).get(scanner.nextInt());  //replace with user id
-                    } catch(Exception e) {
-                        System.out.println(e+"\n");
-                        break;
+                    switch (option) {
+                        case 1:
+                            Item selectedItem;
+                            try {
+                                for (Map.Entry<Integer, Item> e : supplierInterface.sViewItem(0).entrySet()) {  //replace with user id
+                                    System.out.println(e.getKey() + ". " + e.getValue().getItemName());
+                                }
+                                System.out.print("\nOption: ");
+                                selectedItem = supplierInterface.sViewItem(0).get(scanner.nextInt());  //replace with user id
+                            } catch (Exception e) {
+                                System.out.println(e + "\n");
+                                break;
+                            }
+
+                            boolean y = true;
+                            while (y) {
+                                System.out.println("\n\nID: " + selectedItem.getItemID()
+                                        + "\nName: " + selectedItem.getItemName()
+                                        + "\nQuantity: " + selectedItem.getItemQuantity());
+                                System.out.println("\n1. Edit name\n2. Edit quantity\n3. Delete item\n4. Back\n\n");
+                                System.out.print("Option: ");
+
+                                option = scanner.nextInt();
+
+                                switch (option) {
+                                    case 1:
+                                        //edit name
+                                        break;
+                                    case 2:
+                                        //edit quantity
+                                        break;
+                                    case 3:
+                                        //delete item
+                                        break;
+                                    case 4:
+                                        y = false;
+                                        break;
+                                }
+                            }
+                            break;
+                        case 2:
+                            //view orders
+                            break;
+                        case 3:
+                            scanner.nextLine();
+                            currentSupplier = null;
+                            loggedIn = false;
+                            break;
                     }
-
-                    boolean y = true;
-                    while(y) {
-                        System.out.println("\n\nID: "+selectedItem.getItemID()
-                                +"\nName: "+selectedItem.getItemName()
-                                +"\nQuantity: "+selectedItem.getItemQuantity());
-                        System.out.println("\n1. Edit name\n2. Edit quantity\n3. Delete item\n4. Back\n\n");
-                        System.out.print("Option: ");
-
-                        option = scanner.nextInt();
-
-                        switch(option) {
-                            case 1:
-                                //edit name
-                                break;
-                            case 2:
-                                //edit quantity
-                                break;
-                            case 3:
-                                //delete item
-                                break;
-                            case 4:
-                                y = false;
-                                break;
-                        }
-                    }
-                    break;
-                case 2:
-                    //view orders
-                    break;
-                case 3:
-                    //logout code here
-                    x = false;
-                    break;
+                }
             }
         }
     }

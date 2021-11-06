@@ -115,7 +115,7 @@ public class Database {
         }
     }
 
-    public Client clientSearch(String userName, String password){
+    public static Client clientSearch(String userName, String password){
         String sql = "SELECT userID, userName, password FROM ClientTable WHERE userName ='" + userName + "' AND password ='" + password+"'";
 
         int id = 0;
@@ -139,7 +139,7 @@ public class Database {
         return new Client(id, name, pswd);
     }
 
-    public Supplier supplierSearch(String userName, String password){
+    public static Supplier supplierSearch(String userName, String password){
         String sql = "SELECT userID, userName, password FROM SupplierTable WHERE userName ='" + userName + "' AND password ='" + password+"'";
 
         int id = 0;
