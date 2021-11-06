@@ -72,10 +72,10 @@ public class SupplierMachine {
             }
 
             if(loggedIn) {
-                System.out.println("Welcome, " + currentSupplier.getuserName());  //replace with username
+                System.out.print("\nWelcome, " + currentSupplier.getuserName());  //replace with username
 
                 while (loggedIn) {
-                    System.out.println("\n1. View items\n2. View orders\n3. Logout\n\n");
+                    System.out.println("\n\n1. View items\n2. View orders\n3. Logout\n\n");
                     System.out.print("Option: ");
 
                     int option = scanner.nextInt();

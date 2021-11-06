@@ -34,6 +34,7 @@ public class Database {
 
         String order = "CREATE TABLE IF NOT EXISTS OrderTable (\n"
                 + "	orderID integer PRIMARY KEY,\n"
+                + "	creationDate varchar,\n"
                 + "	address varchar,\n"
                 + "	clientID varchar,\n"
                 + "	FOREIGN KEY(clientID) REFERENCES ClientTable(userID)\n"
@@ -214,6 +215,9 @@ public class Database {
         return getItems(-1);
     }
 
+    public static void insertOrder(Client client, HashMap<Item, Integer> cart) {
+
+    }
 
     private static Connection connect() {
         Connection conn = null;
