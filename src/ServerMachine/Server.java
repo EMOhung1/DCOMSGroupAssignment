@@ -35,8 +35,8 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         return Database.getItems();
     }
 
-    public void purchaseItem(Client client, HashMap<Item, Integer> cart) {
-        Database.insertOrder(client, cart);
+    public void purchaseItem(Client client, String address, HashMap<Item, Integer> cart) {
+        Database.insertOrder(client, address, cart);
     }
 
     public ArrayList<Order> cViewOrders(int userID) {

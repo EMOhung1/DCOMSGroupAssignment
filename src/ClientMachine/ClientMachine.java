@@ -152,10 +152,13 @@ public class ClientMachine {
                                 }
 
                                 System.out.print("\nCheckout? (y/n): ");
+                                scanner.nextLine();
                                 String checkout = scanner.nextLine();
                                 if (checkout.equals("y")) {
+                                    System.out.print("\nAddress: ");
+                                    String address = scanner.nextLine();
                                     try {
-                                        clientInterface.purchaseItem(currentClient, cart);
+                                        clientInterface.purchaseItem(currentClient, address, cart);
                                         System.out.println("Order submitted successfully!");
 
                                     } catch (Exception e) {

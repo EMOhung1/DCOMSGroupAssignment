@@ -3,6 +3,7 @@ package ServerMachine;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -215,8 +216,34 @@ public class Database {
         return getItems(-1);
     }
 
-    public static void insertOrder(Client client, HashMap<Item, Integer> cart) {
+    public static void insertOrder(Client client, String address, HashMap<Item, Integer> cart) {
+        String orderStmt = "INSERT INTO OrderTable(creationDate, address, clientID) VALUES(?,?,?)";
+        String itemStmt = "INSERT INTO OrderItemTable(orderID, itemID, quantity) VALUES(?,?,?)";
 
+        try (Connection conn = connect();
+             PreparedStatement orderPstmt = conn.prepareStatement(orderStmt);
+             PreparedStatement itemPstmt = conn.prepareStatement(itemStmt)) {
+
+            orderPstmt.setString(1, System.currentTimeMillis()+"");
+            orderPstmt.setString(2, address);
+            orderPstmt.setInt(3, client.getUserId());
+            orderPstmt.executeUpdate();
+
+            int orderID = orderPstmt.getGeneratedKeys().getInt(1);
+            for (Map.Entry<Item, Integer> item : cart.entrySet()) {
+                itemPstmt.setInt(1, orderID);
+                itemPstmt.setInt(2, item.getKey().getItemID());
+                itemPstmt.setInt(3, item.getValue());
+                itemPstmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static Order getOrders(int userID) {
+        return null;
     }
 
     private static Connection connect() {
