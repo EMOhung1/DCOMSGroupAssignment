@@ -1,5 +1,6 @@
 package ServerMachine;
 
+import java.io.Serializable;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -99,7 +100,73 @@ public class Database {
     public static void clientSelectAll(){
         String sql = "SELECT userID, userName, password FROM ClientTable";
 
-        try (Connection conn = connect();
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getInt("userID") +  "\t" +
+                        rs.getString("userName") + "\t" +
+                        rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public Client clientSearch(String userName, String password){
+        String sql = "SELECT userID, userName, password FROM ClientTable WHERE userName ='" + userName + "' AND password ='" + password+"'";
+
+        int id = 0;
+        String name = null;
+        String pswd = null;
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                    name = rs.getString("userName");
+                    pswd = rs.getString("password");
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        Client currentClient = new Client(id, name, pswd);
+        return currentClient;
+    }
+
+    public Supplier supplierSearch(String userName, String password){
+        String sql = "SELECT userID, userName, password FROM SupplierTable WHERE userName ='" + userName + "' AND password ='" + password+"'";
+
+        int id = 0;
+        String name = null;
+        String pswd = null;
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                name = rs.getString("userName");
+                pswd = rs.getString("password");
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        Supplier currentSupplier = new Supplier(id, name, pswd);
+        return currentSupplier;
+    }
+
+    public void supplierSelectAll(){
+        String sql = "SELECT userID, userName, password FROM SupplierTable";
+
+        try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
 
