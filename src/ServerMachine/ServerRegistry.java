@@ -26,7 +26,7 @@ public class ServerRegistry {
         Database.init();
 
         //create registry
-        Registry reg = LocateRegistry.createRegistry(5050);
+        Registry reg = LocateRegistry.createRegistry(5000);
         reg.rebind("Connect",new Server());
         logger.log(Level.INFO, "Server registry started successfully");
     }
