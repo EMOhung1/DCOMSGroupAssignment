@@ -6,6 +6,7 @@ public class Item implements Serializable {
     private final int itemID;
     private int itemQuantity;
     private String itemName, supplierName;
+    private Boolean confirm = false;
 
     public Item(int itemID, int itemQuantity, String itemName, String supplierName) {
         this.itemID = itemID; //change to generate unique id
@@ -36,6 +37,14 @@ public class Item implements Serializable {
 
     public String getSupplierName() {
         return supplierName;
+    }
+
+    public Boolean getConfirm() {
+        return confirm;
+    }
+
+    public void confirm() {
+        this.confirm = true;
     }
 
     @Override

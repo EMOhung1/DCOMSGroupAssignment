@@ -14,4 +14,5 @@ public interface ClientInterface extends Remote {
     void clientInsert(String x,String y)throws RemoteException;
     HashMap<Integer, Item> cViewItem() throws RemoteException;
     void purchaseItem(Client client, String address, HashMap<Item, Integer> cart) throws RemoteException;
+    HashMap<Integer, Order> cViewOrders(int userID) throws RemoteException;
 }

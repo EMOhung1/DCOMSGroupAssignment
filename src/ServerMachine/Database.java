@@ -1,14 +1,18 @@
 package ServerMachine;
 
-import java.io.Serializable;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static ServerMachine.ServerRegistry.logfile;
+
 public class Database {
     private static final Logger logger = Logger.getLogger(Database.class.getName());  //logger
+    static {
+        logger.addHandler(logfile);
+    }
     static String url = "jdbc:sqlite:dcoms.db";
 
     public static void init() {
@@ -45,6 +49,7 @@ public class Database {
                 + "	orderID integer,\n"
                 + "	itemID integer,\n"
                 + "	quantity integer,\n"
+                + "	confirm integer,\n"
                 + "	FOREIGN KEY(orderID) REFERENCES OrderTable(orderID),\n"
                 + "	FOREIGN KEY(itemID) REFERENCES ItemTable(itemID)\n"
                 + ");";
@@ -218,7 +223,7 @@ public class Database {
 
     public static void insertOrder(Client client, String address, HashMap<Item, Integer> cart) {
         String orderStmt = "INSERT INTO OrderTable(creationDate, address, clientID) VALUES(?,?,?)";
-        String itemStmt = "INSERT INTO OrderItemTable(orderID, itemID, quantity) VALUES(?,?,?)";
+        String itemStmt = "INSERT INTO OrderItemTable(orderID, itemID, quantity, confirm) VALUES(?,?,?,?)";
         String qtyStmt = "UPDATE ItemTable SET itemQuantity = ? WHERE itemID = ?";
 
         try (Connection conn = connect();
@@ -236,6 +241,7 @@ public class Database {
                 itemPstmt.setInt(1, orderID);
                 itemPstmt.setInt(2, item.getKey().getItemID());
                 itemPstmt.setInt(3, item.getValue());
+                itemPstmt.setInt(4, 0);
                 itemPstmt.executeUpdate();
 
                 //update item quantity
@@ -249,8 +255,68 @@ public class Database {
         }
     }
 
-    public static Order getOrders(int userID) {
-        return null;
+    public static HashMap<Integer, Order> getOrders(String type, int userID) {
+        String stmt = "SELECT oi.orderID, creationDate, it.itemID, oi.quantity, it.itemName, it.itemQuantity, ot.clientID, ct.userName AS clientName, ot.address, it.supplierID, st.userName AS supplierName, oi.confirm FROM OrderItemTable oi\n" +
+                "LEFT JOIN OrderTable ot ON oi.orderID = ot.orderID\n" +
+                "LEFT JOIN ItemTable it ON oi.itemID = it.itemID\n" +
+                "LEFT JOIN SupplierTable st ON it.supplierID = st.userID\n" +
+                "LEFT JOIN ClientTable ct ON ot.clientID = ct.userID\n";
+        HashMap<Integer, Order> orderList = new HashMap<>();
+
+        if(type.equals("client")) {
+            stmt = stmt + "WHERE ot.clientID = ? ORDER BY oi.orderID ASC";
+        } else if(type.equals("supplier")) {
+            stmt = stmt + "WHERE it.supplierID = ? ORDER BY oi.orderID ASC";
+        } else {
+            return null;
+        }
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt  = conn.prepareStatement(stmt)){
+
+            pstmt.setInt(1, userID);
+            ResultSet rs = pstmt.executeQuery();
+
+            int currID = 0;
+            Order order = null;
+            HashMap<Item, Integer> itemList = null;
+            while(rs.next()) {
+                if(currID != rs.getInt("orderID")) {
+                    if(itemList != null) {
+                        order.setItemList(itemList);
+                        orderList.put(order.getOrderID(), order);
+                    }
+                    currID = rs.getInt("orderID");
+                    order = new Order(currID,
+                            rs.getString("address"),
+                            rs.getString("clientName"),
+                            null,
+                            new Date(Long.parseLong(rs.getString("creationDate"))));
+                    itemList = new HashMap<>();
+                }
+
+                if(itemList != null) {
+                    Item item = new Item(rs.getInt("itemID"),
+                            rs.getInt("itemQuantity"),
+                            rs.getString("itemName"),
+                            rs.getString("supplierName"));
+                    itemList.put(item, rs.getInt("quantity"));
+                    if(rs.getInt("confirm") == 1) {
+                        item.confirm();
+                    }
+                }
+
+            }
+            if(itemList != null) {
+                order.setItemList(itemList);
+                orderList.put(order.getOrderID(), order);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return orderList;
     }
 
     private static Connection connect() {

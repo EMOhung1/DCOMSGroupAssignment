@@ -1,10 +1,10 @@
 package ServerMachine;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Order {
+public class Order implements Serializable {
     private final int orderID;
     private String address, clientUserName;
     private HashMap<Item, Integer> itemList;
@@ -32,6 +32,10 @@ public class Order {
 
     public HashMap<Item, Integer> getItemList() {
         return itemList;
+    }
+
+    public void setItemList(HashMap<Item, Integer> itemList) {
+        this.itemList = itemList;
     }
 
     public Date getCreationDate() {

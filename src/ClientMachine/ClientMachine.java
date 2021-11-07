@@ -140,11 +140,10 @@ public class ClientMachine {
                             break;
                         case 3:
                             //view cart
-                            System.out.println("\nCart:\n");
                             if(!cart.isEmpty()) {
-                                System.out.format("%-10s%-40s%-40s%-3s%n", "ItemID", "Item Name", "Supplier", "Quantity");
+                                System.out.format("%n%-10s%-25s%-30s%-3s%n", "ItemID", "Item Name", "Supplier", "Quantity");
                                 for (Map.Entry<Item, Integer> item : cart.entrySet()) {
-                                    System.out.format("%-10s%-40s%-40s%-3s%n",
+                                    System.out.format("%-10s%-25s%-30s%-3s%n",
                                             item.getKey().getItemID(),
                                             item.getKey().getItemName(),
                                             item.getKey().getSupplierName(),
@@ -177,6 +176,50 @@ public class ClientMachine {
                             break;
                         case 4:
                             //view orders
+                            HashMap<Integer, Order> orders;
+                            try {
+                                orders = clientInterface.cViewOrders(currentClient.getUserId());
+                            } catch(Exception e) {
+                                System.out.println(e.getMessage());break;}
+                            System.out.format("%n%-11s%-25s%-30s%-10s%n", "OrderID", "Date", "Address", "No. of items");
+                            for (Map.Entry<Integer, Order> o : orders.entrySet()) {
+                                int sum = 0;
+                                for(int i: o.getValue().getItemList().values()) {
+                                    sum += i;
+                                }
+                                System.out.format("%1$-10s %2$tY-%2$tm-%2$td %2$tH:%2$tM:%2$tS %3$-4s %4$-29s %5$-10s%n",
+                                        o.getKey(),
+                                        o.getValue().getCreationDate(),
+                                        "",
+                                        o.getValue().getAddress(),
+                                        sum);
+                            }
+
+                            System.out.print("\nOption: ");
+                            int orderID = scanner.nextInt();
+                            Order order;
+                            if(orders.containsKey(orderID)) {
+                                order = orders.get(orderID);
+                            } else {
+                                System.out.println("OrderID does not exist!");
+                                break;
+                            }
+
+                            System.out.println("\nOrderID: " + order.getOrderID());
+                            System.out.format("%1$s %2$tY-%2$tm-%2$td %2$tH:%2$tM:%2$tS%n", "Order date: ", order.getCreationDate());
+                            System.out.println("Address: " + order.getAddress());
+
+                            System.out.println("\nItems:");
+                            System.out.format("%-10s%-25s%-30s%-15s%-15s%n", "ItemID", "Item Name", "Supplier", "Quantity", "Confirm");
+                            for (Map.Entry<Item, Integer> item : order.getItemList().entrySet()) {
+                                System.out.format("%-10s%-25s%-30s%-15s%-15s%n",
+                                        item.getKey().getItemID(),
+                                        item.getKey().getItemName(),
+                                        item.getKey().getSupplierName(),
+                                        item.getValue(),
+                                        item.getKey().getConfirm());
+                            }
+
                             break;
                         case 5:
                             scanner.nextLine();
