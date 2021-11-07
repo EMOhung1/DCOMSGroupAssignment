@@ -28,8 +28,9 @@ public class ClientMachine {
     public static void main(String[] args){
         try{
             clientInterface = (ClientInterface) Naming.lookup("rmi://localhost:5050/Connect");
-        }catch (Exception e){
-            System.out.println(e+"\n");
+        } catch(Exception e) {
+            System.out.println("Failed to connect to the CKFC Delivery System!");
+            return;
         }
 
         while(!loggedIn){
@@ -210,7 +211,7 @@ public class ClientMachine {
                             System.out.println("Address: " + order.getAddress());
 
                             System.out.println("\nItems:");
-                            System.out.format("%-10s%-25s%-30s%-15s%-15s%n", "ItemID", "Item Name", "Supplier", "Quantity", "Confirm");
+                            System.out.format("%-10s%-25s%-30s%-15s%-15s%n", "ItemID", "Item Name", "Supplier", "Quantity", "Confirmed");
                             for (Map.Entry<Item, Integer> item : order.getItemList().entrySet()) {
                                 System.out.format("%-10s%-25s%-30s%-15s%-15s%n",
                                         item.getKey().getItemID(),
