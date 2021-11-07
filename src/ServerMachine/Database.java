@@ -12,8 +12,8 @@ public class Database {
         //databaseConnectCheck(); Not needed
         //createNewTable();
         //database.insertClient("June","321");
-        //database.clientSelectAll();
-        database.supplierSelectAll();
+        database.clientSelectAll();
+        //database.supplierSelectAll();
         //database.clientSearch("tai","456");
     }
 
