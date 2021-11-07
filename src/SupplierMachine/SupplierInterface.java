@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 public interface SupplierInterface extends Remote {
     Supplier supplierLogin(String x, String y)throws RemoteException;
+    Supplier checkSupplierDupe(String x) throws RemoteException;
     void supplierInsert(String x,String y)throws RemoteException;
     HashMap<Integer, Item> sViewItem(int userID) throws RemoteException;
     HashMap<Integer, Order> sViewOrders(int userID) throws RemoteException;

@@ -45,6 +45,14 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         Database.insertClient(userName,password);
     }
 
+    public Client checkClientDupe(String userName){
+        try {
+            logger.log(Level.INFO, "Client " + getClientHost() + " checking for duplicated Username " + userName);
+        } catch(Exception e) {}
+
+        return Database.clientCheckDupe(userName);
+    }
+
     public HashMap<Integer, Item> cViewItem() {
         HashMap<Integer, Item> items = Database.getItems();
         try {
@@ -94,6 +102,14 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         } catch(Exception e) {}
 
         Database.insertSupplier(userName,password);
+    }
+
+    public Supplier checkSupplierDupe(String userName){
+        try {
+            logger.log(Level.INFO, "Supplier " + getClientHost() + " checking for duplicated Username " + userName);
+        } catch(Exception e) {}
+
+        return Database.supplierCheckDupe(userName);
     }
 
     public HashMap<Integer, Item> sViewItem(int userID) {

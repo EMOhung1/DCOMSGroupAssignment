@@ -49,7 +49,7 @@ public class SupplierMachine {
                 String newPassword = scanner.nextLine();
 
                 try {
-                    checkDupe = supplierInterface.supplierLogin(newUsername,newPassword);
+                    checkDupe = supplierInterface.checkSupplierDupe(newUsername);
                     if(checkDupe.getuserName() == null && checkDupe.getPassword() == null){
                         supplierInterface.supplierInsert(newUsername, newPassword);
                         currentSupplier = supplierInterface.supplierLogin(newUsername,newPassword);
@@ -61,7 +61,7 @@ public class SupplierMachine {
                         }
                     }
                     else{
-                        System.out.println("\nDuplicate Account Detected\n");
+                        System.out.println("\nDuplicate Username Detected, Please Provide A Unique Username\n");
                         checkDupe = null;
                     }
                 }catch(Exception ex){System.out.println(ex.getMessage());}
