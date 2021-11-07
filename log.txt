@@ -33,3 +33,15 @@
 2021-11-07 20:13:20 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user chi chung
 2021-11-07 20:13:30 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user chi chung
 2021-11-07 20:13:35 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user chi chung
+2021-11-07 21:13:03 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-07 21:14:12 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-07 21:14:39 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-07 21:14:40 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-07 21:14:58 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-07 21:15:37 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-07 21:15:37 INFO   ServerMachine.Server clientInsert Client 10.1.19.2 registered a new user chi hung
+2021-11-07 21:15:37 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-07 21:15:52 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-07 21:15:52 INFO   ServerMachine.Server clientInsert Client 10.1.19.2 registered a new user chi hung
+2021-11-07 21:15:52 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-07 21:18:44 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
