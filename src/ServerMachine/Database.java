@@ -148,8 +148,58 @@ public class Database {
         return new Client(id, name, pswd);
     }
 
+    public static Client clientCheckDupe(String userName){
+        String sql = "SELECT userID, userName, password FROM ClientTable WHERE userName ='" + userName + "'";
+
+        int id = 0;
+        String name = null;
+        String pswd = null;
+
+        try (Connection conn = connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                id = rs.getInt("userID");
+                name = rs.getString("userName");
+                pswd = rs.getString("password");
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return new Client(id, name, pswd);
+    }
+
     public static Supplier supplierSearch(String userName, String password){
         String sql = "SELECT userID, userName, password FROM SupplierTable WHERE userName ='" + userName + "' AND password ='" + password+"'";
+
+        int id = 0;
+        String name = null;
+        String pswd = null;
+
+        try (Connection conn = connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                id = rs.getInt("userID");
+                name = rs.getString("userName");
+                pswd = rs.getString("password");
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return new Supplier(id, name, pswd);
+    }
+
+    public static Supplier supplierCheckDupe(String userName){
+        String sql = "SELECT userID, userName, password FROM SupplierTable WHERE userName ='" + userName + "'";
 
         int id = 0;
         String name = null;

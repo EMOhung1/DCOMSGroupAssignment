@@ -53,7 +53,7 @@ public class ClientMachine {
                 String newPassword = scanner.nextLine();
 
                 try {
-                    checkDupe = clientInterface.clientLogin(newUsername,newPassword);
+                    checkDupe = clientInterface.checkClientDupe(newUsername);
                     if(checkDupe.getUserName() == null && checkDupe.getPassword() == null){
                         clientInterface.clientInsert(newUsername, newPassword);
                         currentClient = clientInterface.clientLogin(newUsername,newPassword);
@@ -66,7 +66,7 @@ public class ClientMachine {
                         }
                     }
                     else{
-                        System.out.println("\nDuplicate Account Detected\n");
+                        System.out.println("\nDuplicate Username Detected, Please Provide A Unique Username\n");
                         checkDupe = null;
                     }
                 }catch(Exception ex){System.out.println(ex.getMessage());}
