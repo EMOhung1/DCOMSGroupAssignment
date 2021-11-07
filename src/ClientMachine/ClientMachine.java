@@ -23,6 +23,8 @@ public class ClientMachine {
     private static boolean loggedIn = false;
 
     private static Client currentClient;
+    private static Client checkDupe;
+
     private static HashMap<Item, Integer> cart;
 
     public static void main(String[] args){
@@ -51,16 +53,22 @@ public class ClientMachine {
                 String newPassword = scanner.nextLine();
 
                 try {
-                    clientInterface.clientInsert(newUsername, newPassword);
-                    currentClient = clientInterface.clientLogin(newUsername,newPassword);
+                    checkDupe = clientInterface.clientLogin(newUsername,newPassword);
+                    if(checkDupe.getUserName() == null && checkDupe.getPassword() == null){
+                        clientInterface.clientInsert(newUsername, newPassword);
+                        currentClient = clientInterface.clientLogin(newUsername,newPassword);
 
-                    if(currentClient.getUserName() != null && currentClient.getPassword() != null){
-                        loggedIn = true;
+                        if(currentClient.getUserName() != null && currentClient.getPassword() != null){
+                            loggedIn = true;
+                        }
+                        else{
+                            System.out.println("\nInvalid Login Credentials\n");
+                        }
                     }
                     else{
-                        System.out.println("\nInvalid Login Credentials\n");
+                        System.out.println("\nDuplicate Account Detected\n");
+                        checkDupe = null;
                     }
-
                 }catch(Exception ex){System.out.println(ex.getMessage());}
 
             } else if(username.equals("-1") && password.equals("-1")) {

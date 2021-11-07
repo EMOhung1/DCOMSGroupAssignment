@@ -19,6 +19,7 @@ public class SupplierMachine {
     private static final Scanner scanner = new Scanner(System.in);
 
     private static Supplier currentSupplier;
+    private static Supplier checkDupe;
 
     private static boolean loggedIn = false;
 
@@ -48,13 +49,20 @@ public class SupplierMachine {
                 String newPassword = scanner.nextLine();
 
                 try {
-                    supplierInterface.supplierInsert(newUsername, newPassword);
-                    currentSupplier = supplierInterface.supplierLogin(newUsername,newPassword);
-                    if(currentSupplier.getuserName() != null && currentSupplier.getPassword() != null){
-                        loggedIn = true;
+                    checkDupe = supplierInterface.supplierLogin(newUsername,newPassword);
+                    if(checkDupe.getuserName() == null && checkDupe.getPassword() == null){
+                        supplierInterface.supplierInsert(newUsername, newPassword);
+                        currentSupplier = supplierInterface.supplierLogin(newUsername,newPassword);
+                        if(currentSupplier.getuserName() != null && currentSupplier.getPassword() != null){
+                            loggedIn = true;
+                        }
+                        else{
+                            System.out.println("\nInvalid Login Credentials\n");
+                        }
                     }
                     else{
-                        System.out.println("\nInvalid Login Credentials\n");
+                        System.out.println("\nDuplicate Account Detected\n");
+                        checkDupe = null;
                     }
                 }catch(Exception ex){System.out.println(ex.getMessage());}
 

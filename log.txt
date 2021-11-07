@@ -1,0 +1,35 @@
+2021-11-07 19:55:18 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-07 19:55:18 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-07 19:55:26 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user tai
+2021-11-07 19:55:33 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user tai
+2021-11-07 19:55:40 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user tai2
+2021-11-07 19:55:40 INFO   ServerMachine.Server clientInsert Client 192.168.1.2 registered a new user tai2
+2021-11-07 19:55:40 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user tai2
+2021-11-07 19:55:53 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user tai3
+2021-11-07 19:55:53 INFO   ServerMachine.Server clientInsert Client 192.168.1.2 registered a new user tai3
+2021-11-07 19:55:53 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user tai3
+2021-11-07 19:56:01 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user -1
+2021-11-07 19:56:06 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user tai3
+2021-11-07 19:58:27 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-07 19:58:27 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-07 19:58:40 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user supp3
+2021-11-07 19:58:44 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user suppTest
+2021-11-07 19:58:53 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user supp3
+2021-11-07 19:58:53 INFO   ServerMachine.Server supplierInsert Supplier 192.168.1.2 registered a new user supp3
+2021-11-07 19:58:53 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user supp3
+2021-11-07 19:59:00 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user suppTest
+2021-11-07 19:59:09 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user suppTest
+2021-11-07 19:59:19 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user supp4
+2021-11-07 19:59:19 INFO   ServerMachine.Server supplierInsert Supplier 192.168.1.2 registered a new user supp4
+2021-11-07 19:59:19 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user supp4
+2021-11-07 19:59:25 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user supp4
+2021-11-07 19:59:31 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user supp4
+2021-11-07 20:09:39 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-07 20:09:39 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-07 20:11:23 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user yz tai
+2021-11-07 20:13:13 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user chi chung
+2021-11-07 20:13:20 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user chi chung
+2021-11-07 20:13:20 INFO   ServerMachine.Server clientInsert Client 192.168.1.2 registered a new user chi chung
+2021-11-07 20:13:20 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user chi chung
+2021-11-07 20:13:30 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user chi chung
+2021-11-07 20:13:35 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user chi chung

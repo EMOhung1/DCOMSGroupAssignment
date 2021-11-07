@@ -173,7 +173,7 @@ public class Database {
         return new Supplier(id, name, pswd);
     }
 
-    public void supplierSelectAll(){
+    public static void supplierSelectAll(){
         String sql = "SELECT userID, userName, password FROM SupplierTable";
 
         try (Connection conn = connect();
