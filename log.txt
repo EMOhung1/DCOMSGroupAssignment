@@ -76,6 +76,18 @@
 2021-11-07 21:57:58 INFO   ServerMachine.Server checkClientDupe Client 10.1.19.2 checking for duplicated Username chi hung
 2021-11-07 21:59:03 INFO   ServerMachine.Database init Database initialized successfully
 2021-11-07 21:59:03 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-08 10:50:16 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-08 10:50:16 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-08 11:02:55 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-08 11:03:09 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (7)
+2021-11-08 11:03:36 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (7)
+2021-11-08 11:04:13 INFO   ServerMachine.Server purchaseItem Client 10.1.19.2 (chi hung) purchased 0 items
+2021-11-08 11:06:27 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user chi hung
+2021-11-08 11:06:37 INFO   ServerMachine.Server checkSupplierDupe Supplier 10.1.19.2 checking for duplicated Username chi hung
+2021-11-08 11:06:37 INFO   ServerMachine.Server supplierInsert Supplier 10.1.19.2 registered a new user chi hung
+2021-11-08 11:06:37 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user chi hung
+2021-11-08 11:06:47 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 11
+2021-11-08 11:06:49 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
 2021-11-08 10:00:05 INFO   ServerMachine.Database init Database initialized successfully
 2021-11-08 10:00:05 INFO   ServerMachine.ServerRegistry main Server registry started successfully
 2021-11-08 10:00:16 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user suppliersSanjit
@@ -133,3 +145,50 @@
 2021-11-08 11:12:12 INFO   ServerMachine.Server sViewOrders Supplier 192.168.1.2 requested a list of all orders (3) for userID 3
 2021-11-08 11:12:30 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user tai
 2021-11-08 11:12:31 INFO   ServerMachine.Server cViewOrders Client 192.168.1.2 requested a list of all orders (3) made by userID 1
+2021-11-08 11:16:53 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-08 11:16:53 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-08 11:17:11 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user chi hung
+2021-11-08 11:17:20 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
+2021-11-08 11:17:31 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 11
+2021-11-08 11:17:34 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
+2021-11-08 11:20:07 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-08 11:20:17 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (7)
+2021-11-08 11:20:32 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (7)
+2021-11-08 11:20:44 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (1) made by userID 12
+2021-11-08 11:20:59 INFO   ServerMachine.Server purchaseItem Client 10.1.19.2 (chi hung) purchased 3 items
+2021-11-08 11:21:04 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (2) made by userID 12
+2021-11-08 11:21:45 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user chi hung
+2021-11-08 11:21:48 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
+2021-11-08 11:21:55 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 11
+2021-11-08 11:22:07 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
+2021-11-08 11:24:46 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user -1
+2021-11-08 11:25:26 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-08 11:25:29 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (2) made by userID 12
+2021-11-08 11:16:53 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-08 11:16:53 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-08 11:17:11 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user chi hung
+2021-11-08 11:17:20 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
+2021-11-08 11:17:31 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 11
+2021-11-08 11:17:34 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
+2021-11-08 11:20:07 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-08 11:20:17 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (7)
+2021-11-08 11:20:32 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (7)
+2021-11-08 11:20:44 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (1) made by userID 12
+2021-11-08 11:20:59 INFO   ServerMachine.Server purchaseItem Client 10.1.19.2 (chi hung) purchased 3 items
+2021-11-08 11:21:04 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (2) made by userID 12
+2021-11-08 11:21:45 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user chi hung
+2021-11-08 11:21:48 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
+2021-11-08 11:21:55 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 11
+2021-11-08 11:22:07 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 11
+2021-11-08 11:24:46 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user -1
+2021-11-08 11:25:26 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-08 11:25:29 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (2) made by userID 12
+2021-11-08 11:27:27 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user sup2
+2021-11-08 11:27:32 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user supp2
+2021-11-08 11:27:36 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (2) for userID 2
+2021-11-08 11:27:54 INFO   ServerMachine.Server confirmOrder Client 10.1.19.2 confirmed an order 3
+2021-11-08 11:28:00 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (2) for userID 2
+2021-11-08 11:28:12 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (2) for userID 2
+2021-11-08 11:28:39 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (2) for userID 2
+2021-11-08 11:29:03 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
+2021-11-08 11:29:06 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (2) made by userID 12
