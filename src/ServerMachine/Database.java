@@ -105,6 +105,19 @@ public class Database {
         }
     }
 
+    public static void orderConfirm(int ItemID, int OrderID){
+        String sql = "UPDATE OrderItemTable SET confirm = 1 WHERE orderID ='" + OrderID + "' AND itemID =" + ItemID;
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void clientSelectAll(){
         String sql = "SELECT userID, userName, password FROM ClientTable";
 
