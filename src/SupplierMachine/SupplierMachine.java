@@ -146,6 +146,10 @@ public class SupplierMachine {
                                 orders = supplierInterface.sViewOrders(currentSupplier.getSupplierId());
                             } catch(Exception e) {
                                 System.out.println(e.getMessage());break;}
+                            if(orders.isEmpty()) {
+                                System.out.println("No orders found!");
+                                break;
+                            }
                             System.out.format("%n%-11s%-25s%-30s%-30s%-10s%n", "OrderID", "Date", "Client", "Address", "No. of items");
                             for (Map.Entry<Integer, Order> o : orders.entrySet()) {
                                 int sum = 0;
