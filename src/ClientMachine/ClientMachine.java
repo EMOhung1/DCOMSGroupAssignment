@@ -190,6 +190,10 @@ public class ClientMachine {
                                 orders = clientInterface.cViewOrders(currentClient.getUserId());
                             } catch(Exception e) {
                                 System.out.println(e.getMessage());break;}
+                            if(orders.isEmpty()) {
+                                System.out.println("No orders found!");
+                                break;
+                            }
                             System.out.format("%n%-11s%-25s%-30s%-10s%n", "OrderID", "Date", "Address", "No. of items");
                             for (Map.Entry<Integer, Order> o : orders.entrySet()) {
                                 int sum = 0;
@@ -260,6 +264,8 @@ public class ClientMachine {
                     int qty = scanner.nextInt();
                     if(qty > item.getItemQuantity() || (cart.containsKey(item) && qty+cart.get(item) > item.getItemQuantity())) {
                         System.out.println("Quantity exceeds available item quantity!");
+                    } else if(qty<1) {
+                        System.out.println("Invalid quantity!");
                     } else {
                         cart.put(item, cart.getOrDefault(item, 0) + qty);
                     }
