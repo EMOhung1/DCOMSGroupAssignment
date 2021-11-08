@@ -192,3 +192,16 @@
 2021-11-08 11:28:39 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (2) for userID 2
 2021-11-08 11:29:03 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chi hung
 2021-11-08 11:29:06 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (2) made by userID 12
+2021-11-08 15:56:45 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-08 15:56:45 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-08 15:57:18 INFO   ServerMachine.Server checkClientDupe Client 192.168.1.2 checking for duplicated Username testBlank
+2021-11-08 15:57:18 INFO   ServerMachine.Server clientInsert Client 192.168.1.2 registered a new user testBlank
+2021-11-08 15:57:18 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user testBlank
+2021-11-08 15:57:37 INFO   ServerMachine.Server clientLogin Client 192.168.1.2 logged in as user testBlank2
+2021-11-08 15:58:58 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-08 15:58:58 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-08 15:59:14 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user suppBlank
+2021-11-08 15:59:16 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user 
+2021-11-08 15:59:20 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user 
+2021-11-08 15:59:41 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user 
+2021-11-08 15:59:41 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user 
