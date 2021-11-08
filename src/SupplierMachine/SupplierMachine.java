@@ -10,9 +10,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class SupplierMachine {
     private static SupplierInterface supplierInterface;
@@ -181,6 +179,7 @@ public class SupplierMachine {
                             boolean confirmed = false;
                             System.out.println("\nItems:");
                             System.out.format("%-10s%-25s%-15s%-15s%n", "ItemID", "Item Name", "Quantity", "Confirmed");
+                            List<Integer> itemIdList = new ArrayList<Integer>();
                             for (Map.Entry<Item, Integer> item : order.getItemList().entrySet()) {
                                 System.out.format("%-10s%-25s%-15s%-15s%n",
                                         item.getKey().getItemID(),
@@ -189,6 +188,7 @@ public class SupplierMachine {
                                         item.getKey().getConfirm());
 
                                 confirmed = item.getKey().getConfirm();
+                                itemIdList.add(item.getKey().getItemID());
                             }
 
                             if(!confirmed) {
@@ -196,7 +196,11 @@ public class SupplierMachine {
                                 scanner.nextLine();
                                 String confirm = scanner.nextLine();
                                 if(confirm.equals("y")) {
-                                    //confirm order
+                                    try {
+                                        for (int itemId : itemIdList){
+                                            supplierInterface.confirmOrder(itemId, order.getOrderID());
+                                        }
+                                    }catch(Exception ex){System.out.println(ex.getMessage());}
                                 }
                             }
 
