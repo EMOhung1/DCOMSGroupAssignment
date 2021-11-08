@@ -23,7 +23,7 @@ public class SupplierMachine {
 
     public static void main(String[] args) {
         try{
-            supplierInterface = (SupplierInterface) Naming.lookup("rmi://localhost:5050/Connect");
+            supplierInterface = (SupplierInterface) Naming.lookup("rmi://localhost:5000/Connect");
         } catch(Exception e) {
             System.out.println("Failed to connect to the CKFC Delivery System!");
             return;

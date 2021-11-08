@@ -29,7 +29,7 @@ public class ClientMachine {
 
     public static void main(String[] args){
         try{
-            clientInterface = (ClientInterface) Naming.lookup("rmi://localhost:5050/Connect");
+            clientInterface = (ClientInterface) Naming.lookup("rmi://localhost:5000/Connect");
         } catch(Exception e) {
             System.out.println("Failed to connect to the CKFC Delivery System!");
             return;
