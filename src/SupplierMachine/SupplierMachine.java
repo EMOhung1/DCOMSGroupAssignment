@@ -46,23 +46,29 @@ public class SupplierMachine {
                 System.out.print("Password: ");
                 String newPassword = scanner.nextLine();
 
-                try {
-                    checkDupe = supplierInterface.checkSupplierDupe(newUsername);
-                    if(checkDupe.getuserName() == null && checkDupe.getPassword() == null){
-                        supplierInterface.supplierInsert(newUsername, newPassword);
-                        currentSupplier = supplierInterface.supplierLogin(newUsername,newPassword);
-                        if(currentSupplier.getuserName() != null && currentSupplier.getPassword() != null){
-                            loggedIn = true;
+                if(!newUsername.isBlank() && !newPassword.isBlank()){
+                    try {
+                        checkDupe = supplierInterface.checkSupplierDupe(newUsername);
+                        if(checkDupe.getuserName() == null && checkDupe.getPassword() == null){
+                            supplierInterface.supplierInsert(newUsername, newPassword);
+                            currentSupplier = supplierInterface.supplierLogin(newUsername,newPassword);
+                            if(currentSupplier.getuserName() != null && currentSupplier.getPassword() != null){
+                                loggedIn = true;
+                            }
+                            else{
+                                System.out.println("\nInvalid Login Credentials\n");
+                            }
                         }
                         else{
-                            System.out.println("\nInvalid Login Credentials\n");
+                            System.out.println("\nDuplicate Username Detected, Please Provide A Unique Username\n");
+                            checkDupe = null;
                         }
-                    }
-                    else{
-                        System.out.println("\nDuplicate Username Detected, Please Provide A Unique Username\n");
-                        checkDupe = null;
-                    }
-                }catch(Exception ex){System.out.println(ex.getMessage());}
+                    }catch(Exception ex){System.out.println(ex.getMessage());}
+                }
+                else
+                {
+                    System.out.println("\nPlease Do Not Leave The Username Or The Password As Blank\n");
+                }
 
             } else if(username.equals("-1") && password.equals("-1")) {
                 return;
