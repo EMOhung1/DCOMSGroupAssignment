@@ -260,6 +260,8 @@ public class ClientMachine {
                     int qty = scanner.nextInt();
                     if(qty > item.getItemQuantity() || (cart.containsKey(item) && qty+cart.get(item) > item.getItemQuantity())) {
                         System.out.println("Quantity exceeds available item quantity!");
+                    } else if(qty<1) {
+                        System.out.println("Invalid quantity!");
                     } else {
                         cart.put(item, cart.getOrDefault(item, 0) + qty);
                     }
