@@ -45,13 +45,6 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         Database.insertClient(userName,password);
     }
 
-    public void confirmOrder(int itemID, int orderID){
-        try {
-            logger.log(Level.INFO, "Client " + getClientHost() + " confirmed an order " + orderID);
-        } catch(Exception e) {}
-        Database.orderConfirm(itemID, orderID);
-    }
-
     public Client checkClientDupe(String userName){
         try {
             logger.log(Level.INFO, "Client " + getClientHost() + " checking for duplicated Username " + userName);
@@ -135,6 +128,13 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         } catch(Exception e) {}
 
         return orders;
+    }
+
+    public void confirmOrder(int itemID, int orderID){
+        try {
+            logger.log(Level.INFO, "Supplier " + getClientHost() + " confirmed an order " + orderID);
+        } catch(Exception e) {}
+        Database.orderConfirm(itemID, orderID);
     }
 
 }
