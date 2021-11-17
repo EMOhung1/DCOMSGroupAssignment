@@ -205,3 +205,40 @@
 2021-11-08 15:59:20 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user 
 2021-11-08 15:59:41 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user 
 2021-11-08 15:59:41 INFO   ServerMachine.Server supplierLogin Supplier 192.168.1.2 logged in as user 
+2021-11-17 13:23:32 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-17 13:23:32 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-17 13:24:03 INFO   ServerMachine.Server clientLogin Client 10.111.90.18 logged in as user sanjit
+2021-11-17 13:24:31 INFO   ServerMachine.Server checkClientDupe Client 10.111.90.18 checking for duplicated Username sanjit
+2021-11-17 13:24:40 INFO   ServerMachine.Server clientLogin Client 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:24:45 INFO   ServerMachine.Server clientLogin Client 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:25:07 INFO   ServerMachine.Server checkClientDupe Client 10.111.90.18 checking for duplicated Username sanjit1
+2021-11-17 13:25:07 INFO   ServerMachine.Server clientInsert Client 10.111.90.18 registered a new user sanjit1
+2021-11-17 13:25:07 INFO   ServerMachine.Server clientLogin Client 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:25:20 INFO   ServerMachine.Server cViewItem Client 10.111.90.18 requested a list of all items (7)
+2021-11-17 13:25:58 INFO   ServerMachine.Server cViewItem Client 10.111.90.18 requested a list of all items (7)
+2021-11-17 13:26:11 INFO   ServerMachine.Server cViewItem Client 10.111.90.18 requested a list of all items (7)
+2021-11-17 13:26:33 INFO   ServerMachine.Server cViewOrders Client 10.111.90.18 requested a list of all orders (0) made by userID 14
+2021-11-17 13:27:04 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user sanjit
+2021-11-17 13:27:30 INFO   ServerMachine.Server checkSupplierDupe Supplier 10.111.90.18 checking for duplicated Username sanjit1
+2021-11-17 13:27:30 INFO   ServerMachine.Server supplierInsert Supplier 10.111.90.18 registered a new user sanjit1
+2021-11-17 13:27:30 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:27:32 INFO   ServerMachine.Server sViewItem Supplier 10.111.90.18 requested a list of all items (0) for userID 12
+2021-11-17 13:27:34 INFO   ServerMachine.Server sViewOrders Supplier 10.111.90.18 requested a list of all orders (0) for userID 12
+2021-11-17 13:28:50 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-17 13:28:50 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-17 13:30:27 INFO   ServerMachine.Server clientLogin Client 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:30:59 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:31:10 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:31:33 INFO   ServerMachine.Server sViewItem Supplier 10.111.90.18 requested a list of all items (0) for userID 12
+2021-11-17 13:31:35 INFO   ServerMachine.Server sViewOrders Supplier 10.111.90.18 requested a list of all orders (0) for userID 12
+2021-11-17 13:33:01 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-17 13:33:01 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-17 13:33:15 INFO   ServerMachine.Server clientLogin Client 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:35:39 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user sanjit1
+2021-11-17 13:44:32 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user sanjit1
+2021-11-17 14:16:59 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-17 14:16:59 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-17 14:17:50 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user sanjit1
+2021-11-17 14:17:54 INFO   ServerMachine.Server sViewItem Supplier 10.111.90.18 requested a list of all items (0) for userID 12
+2021-11-17 14:18:10 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user supp2
+2021-11-17 14:18:14 INFO   ServerMachine.Server sViewItem Supplier 10.111.90.18 requested a list of all items (2) for userID 2

@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\USER\IdeaProjects\DCOMSGroupAssignment\dcoms.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="dcoms [2]" uuid="f466a7fc-f117-4ff3-b786-0c5789a1409a">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\TP051477\IdeaProjects\DCOMSGroupAssignment\dcoms.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -89,7 +89,7 @@ public class SupplierMachine {
                 System.out.print("\nWelcome, " + currentSupplier.getuserName());  //replace with username
 
                 while (loggedIn) {
-                    System.out.println("\n\n1. View items\n2. View orders\n3. Logout\n\n");
+                    System.out.println("\n\n1. View items\n2. View orders\n3. Logout\n4.Register items\n\n"); // adding register items as option
                     System.out.print("Option: ");
 
                     int option = scanner.nextInt();
@@ -219,6 +219,10 @@ public class SupplierMachine {
                             scanner.nextLine();
                             currentSupplier = null;
                             loggedIn = false;
+                            break;
+
+                        case 4:
+                            System.out.println("In progress");
                             break;
                     }
                 }

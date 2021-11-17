@@ -17,4 +17,5 @@ public interface SupplierInterface extends Remote {
     void supplierInsert(String x,String y)throws RemoteException;
     HashMap<Integer, Item> sViewItem(int userID) throws RemoteException;
     HashMap<Integer, Order> sViewOrders(int userID) throws RemoteException;
+    void sRegisterItem(int x, String y, String z)throws RemoteException;
 }

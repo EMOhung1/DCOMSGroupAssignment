@@ -280,6 +280,19 @@ public class Database {
         return items;
     }
 
+    public static void registerItem(int itemQuantity, String itemName,String userName){ //work here for register item
+
+        String registerStatement = "INSERT INTO ItemTable(itemQuantity, itemName, userName) VALUES(?,?,?) ";
+
+            try(Connection conn = connect();
+                PreparedStatement registerPstmt = conn.prepareStatement(registerStatement)){
+
+                    registerPstmt.executeUpdate();
+
+            }catch(SQLException ex){}
+
+    }
+
     public static HashMap<Integer, Item> getItems() {
         return getItems(-1);
     }
