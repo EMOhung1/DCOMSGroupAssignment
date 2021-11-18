@@ -37,6 +37,7 @@ public class SupplierMachine {
             System.out.print("Password: ");
             String password = scanner.nextLine();
 
+
             if(username.equals("0") && password.equals("0")){
                 //Run the register method here
                 System.out.println("New Supplier Registration:\n");
@@ -89,7 +90,7 @@ public class SupplierMachine {
                 System.out.print("\nWelcome, " + currentSupplier.getuserName());  //replace with username
 
                 while (loggedIn) {
-                    System.out.println("\n\n1. View items\n2. View orders\n3. Logout\n4.Register items\n\n"); // adding register items as option
+                    System.out.println("\n\n1. View items\n2. View orders\n3. Register items\n4. Logout\n\n"); // adding register items as option
                     System.out.print("Option: ");
 
                     int option = scanner.nextInt();
@@ -217,12 +218,6 @@ public class SupplierMachine {
                             break;
                         case 3:
                             scanner.nextLine();
-                            currentSupplier = null;
-                            loggedIn = false;
-                            break;
-
-                        case 4:
-                            scanner.nextLine();
                             System.out.println("Register new items");
                             System.out.println("Enter the item quantity: ");
                             String newQuantity = scanner.nextLine();
@@ -232,10 +227,16 @@ public class SupplierMachine {
 
                             try {
                                 supplierInterface.sRegisterItem(newQuantity, newItemName, supplierId);
-                                System.out.println("Item has been registered");
+                                System.out.println("Item has been registered.");
                             }catch(Exception ex){
                                 ex.getMessage();
                             }
+                            break;
+                        case 4:
+
+                            scanner.nextLine();
+                            currentSupplier = null;
+                            loggedIn = false;
                             break;
                     }
                 }
