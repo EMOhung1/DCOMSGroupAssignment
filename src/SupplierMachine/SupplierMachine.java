@@ -90,6 +90,7 @@ public class SupplierMachine {
                 System.out.print("\nWelcome, " + currentSupplier.getuserName());  //replace with username
 
                 while (loggedIn) {
+                    boolean view = false;
                     System.out.println("\n\n1. View items\n2. View orders\n3. Register items\n4. Logout\n\n"); // adding register items as option
                     System.out.print("Option: ");
 
@@ -129,20 +130,37 @@ public class SupplierMachine {
                                 System.out.print("Option: ");
 
                                 option = scanner.nextInt();
-
-                                switch (option) {
-                                    case 1:
-                                        //edit name
-                                        break;
-                                    case 2:
-                                        //edit quantity
-                                        break;
-                                    case 3:
-                                        //delete item
-                                        break;
-                                    case 4:
-                                        y = false;
-                                        break;
+                                    switch (option) {
+                                        case 1:
+                                            scanner.nextLine(); //dun remove dis oso
+                                            System.out.println("Enter new item name: ");
+                                            String updateItemName = scanner.nextLine();
+                                            try {
+                                                supplierInterface.sUpdateItemName(updateItemName, selectedItem.getItemID());
+                                            } catch (Exception ex) {
+                                                ex.getMessage();
+                                            }
+                                            break;
+                                        case 2:
+                                            scanner.nextLine();
+                                            System.out.println("Enter new item quantity: ");
+                                            int updateItemQuantity = scanner.nextInt();
+                                            try{
+                                                supplierInterface.sUpdateItemQuantity(updateItemQuantity, selectedItem.getItemID());
+                                            }catch(Exception ex){
+                                                ex.getMessage();
+                                            }
+                                            break;
+                                        case 3:
+                                            try{
+                                                supplierInterface.sDeleteItem(selectedItem.getItemID());
+                                            }catch(Exception ex){
+                                                ex.getMessage();
+                                            }
+                                            break;
+                                        case 4:
+                                            y = false;
+                                            break;
                                 }
                             }
                             break;
@@ -217,12 +235,12 @@ public class SupplierMachine {
 
                             break;
                         case 3:
-                            scanner.nextLine();
+                            scanner.nextLine(); //dun remove, idk why it wont work without dis
                             System.out.println("Register new items");
-                            System.out.println("Enter the item quantity: ");
-                            String newQuantity = scanner.nextLine();
                             System.out.println("Enter the item name: ");
                             String newItemName = scanner.nextLine();
+                            System.out.println("Enter the item quantity: ");
+                            int newQuantity = scanner.nextInt();
                             int supplierId = currentSupplier.getSupplierId();
 
                             try {

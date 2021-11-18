@@ -280,13 +280,13 @@ public class Database {
         return items;
     }
 
-    public static void registerItem(String itemQuantity, String itemName, int supplierID){ //REGISTER ITEM (in progress)
+    public static void registerItem(int itemQuantity, String itemName, int supplierID){ //REGISTER ITEM (in progress)
 
         String registerStatement = "INSERT INTO ItemTable(itemQuantity, itemName, supplierID) VALUES(?,?,?) ";
 
             try(Connection conn = connect();
                 PreparedStatement registerPstmt = conn.prepareStatement(registerStatement)){
-                    registerPstmt.setString(1, itemQuantity);
+                    registerPstmt.setInt(1, itemQuantity);
                     registerPstmt.setString(2, itemName);
                     registerPstmt.setInt(3, supplierID);
                     registerPstmt.executeUpdate();
@@ -295,6 +295,49 @@ public class Database {
                 System.out.println(ex.getMessage());
             }
 
+    }
+
+    public static void updateItemName(String updateItemName, int itemID){
+
+        String updateItemStatement = " UPDATE ItemTable SET itemName = '" + updateItemName + "' WHERE itemID = " + itemID;
+
+        try(Connection conn = connect();
+            PreparedStatement updateItemNamePstmt = conn.prepareStatement(updateItemStatement)){
+
+            updateItemNamePstmt.executeUpdate();
+
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public static void updateQuantity(int updateItemQuantity, int itemID){
+
+        String updateQuantityStatement = "UPDATE ItemTable SET itemQuantity = " + updateItemQuantity + " WHERE itemID = " + itemID;
+
+        try(Connection conn = connect();
+            PreparedStatement updateItemQuantityPstmt = conn.prepareStatement(updateQuantityStatement)){
+
+            updateItemQuantityPstmt.executeUpdate();
+
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public static void deleteItem(int itemID){
+
+        String deleteItemStatement = "DELETE FROM ItemTable WHERE itemID = " + itemID;
+        try(Connection conn = connect();
+            PreparedStatement deleteItemPstmt = conn.prepareStatement(deleteItemStatement)){
+
+            deleteItemPstmt.executeUpdate();
+
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     public static HashMap<Integer, Item> getItems() {

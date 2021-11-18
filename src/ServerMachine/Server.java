@@ -137,9 +137,32 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         Database.orderConfirm(itemID, orderID);
     }
 
-    public void sRegisterItem(String itemQuantity, String itemName, int supplierID){
+    public void sRegisterItem(int itemQuantity, String itemName, int supplierID){
         Database.registerItem(itemQuantity, itemName, supplierID);
+        try {
+            logger.log(Level.INFO, "Supplier " + getClientHost() + " registered an item " + itemName);
+        } catch(Exception e) {}
+    }
 
+    public void sUpdateItemName(String updateItemName, int itemID){
+        Database.updateItemName(updateItemName, itemID);
+        try {
+            logger.log(Level.INFO, "Supplier " + getClientHost() + " updated an item name " + itemID);
+        } catch(Exception e) {}
+    }
+
+    public void sUpdateItemQuantity(int updateItemQuantity, int itemID){
+        Database.updateQuantity(updateItemQuantity, itemID);
+        try {
+            logger.log(Level.INFO, "Supplier " + getClientHost() + " updated an item quantity " + itemID);
+        } catch(Exception e) {}
+    }
+
+    public void sDeleteItem(int itemID){
+        Database.deleteItem(itemID);
+        try {
+            logger.log(Level.INFO, "Supplier " + getClientHost() + " deleted an item " + itemID);
+        } catch(Exception e) {}
     }
 
 }
