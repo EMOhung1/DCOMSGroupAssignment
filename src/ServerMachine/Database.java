@@ -280,16 +280,20 @@ public class Database {
         return items;
     }
 
-    public static void registerItem(int itemQuantity, String itemName,String userName){ //work here for register item
+    public static void registerItem(String itemQuantity, String itemName, int supplierID){ //REGISTER ITEM (in progress)
 
-        String registerStatement = "INSERT INTO ItemTable(itemQuantity, itemName, userName) VALUES(?,?,?) ";
+        String registerStatement = "INSERT INTO ItemTable(itemQuantity, itemName, supplierID) VALUES(?,?,?) ";
 
             try(Connection conn = connect();
                 PreparedStatement registerPstmt = conn.prepareStatement(registerStatement)){
-
+                    registerPstmt.setString(1, itemQuantity);
+                    registerPstmt.setString(2, itemName);
+                    registerPstmt.setInt(3, supplierID);
                     registerPstmt.executeUpdate();
 
-            }catch(SQLException ex){}
+            }catch(SQLException ex){
+                System.out.println(ex.getMessage());
+            }
 
     }
 

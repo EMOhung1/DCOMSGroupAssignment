@@ -242,3 +242,78 @@
 2021-11-17 14:17:54 INFO   ServerMachine.Server sViewItem Supplier 10.111.90.18 requested a list of all items (0) for userID 12
 2021-11-17 14:18:10 INFO   ServerMachine.Server supplierLogin Supplier 10.111.90.18 logged in as user supp2
 2021-11-17 14:18:14 INFO   ServerMachine.Server sViewItem Supplier 10.111.90.18 requested a list of all items (2) for userID 2
+2021-11-18 12:45:15 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 12:45:15 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 12:45:26 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 12:46:53 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 12:48:04 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 12:48:04 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 12:48:17 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 12:51:44 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 12:51:44 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 12:51:53 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit
+2021-11-18 12:51:57 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 12:53:32 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 12:53:32 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 12:53:40 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user 4
+2021-11-18 12:53:42 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user 
+2021-11-18 12:53:48 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 12:57:28 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 12:57:28 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 12:57:37 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 12:58:08 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:00:01 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 13:00:01 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 13:00:10 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:01:49 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 13:01:49 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 13:01:57 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit
+2021-11-18 13:02:01 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:02:36 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 13:02:36 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 13:02:46 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:05:27 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:05:53 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:07:17 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:12:51 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit
+2021-11-18 13:12:55 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:14:12 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:27:33 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 13:27:33 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 13:27:42 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:40:50 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 13:40:50 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 13:41:01 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit11
+2021-11-18 13:41:05 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:41:46 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (0) for userID 12
+2021-11-18 13:44:28 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 13:44:28 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 13:44:37 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:44:55 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (0) for userID 12
+2021-11-18 13:47:03 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 13:47:03 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 13:47:13 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 13:47:26 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (0) for userID 12
+2021-11-18 15:11:06 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 15:11:06 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 15:11:18 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit
+2021-11-18 15:11:22 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 15:11:38 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (0) for userID 12
+2021-11-18 15:21:40 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 15:21:40 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 15:21:50 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 15:22:00 INFO   ServerMachine.Server sViewOrders Supplier 192.168.0.141 requested a list of all orders (0) for userID 12
+2021-11-18 15:31:33 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 15:31:33 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 15:31:43 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 15:31:45 INFO   ServerMachine.Server sViewOrders Supplier 192.168.0.141 requested a list of all orders (0) for userID 12
+2021-11-18 15:31:47 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (0) for userID 12
+2021-11-18 15:32:03 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (0) for userID 12
+2021-11-18 15:57:15 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-18 15:57:15 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-18 15:57:25 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit
+2021-11-18 15:57:28 INFO   ServerMachine.Server supplierLogin Supplier 192.168.0.141 logged in as user sanjit1
+2021-11-18 15:57:37 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (1) for userID 12
+2021-11-18 15:59:34 INFO   ServerMachine.Server clientLogin Client 192.168.0.141 logged in as user sanjit1
+2021-11-18 15:59:38 INFO   ServerMachine.Server cViewItem Client 192.168.0.141 requested a list of all items (10)
+2021-11-18 16:01:00 INFO   ServerMachine.Server cViewItem Client 192.168.0.141 requested a list of all items (10)

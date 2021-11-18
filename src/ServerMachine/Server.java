@@ -137,13 +137,8 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         Database.orderConfirm(itemID, orderID);
     }
 
-    public void sRegisterItem(int itemQuantity, String itemName,String userName){
-        Database.registerItem(itemQuantity, itemName, userName);
-//        try{
-//            logger.log(Level.INFO,"Supplier " + getClientHost() + " is registering an item for userID" + );
-//        }catch(Exception ex){
-//            ex.getMessage();
-//        }
+    public void sRegisterItem(String itemQuantity, String itemName, int supplierID){
+        Database.registerItem(itemQuantity, itemName, supplierID);
 
     }
 

@@ -222,7 +222,20 @@ public class SupplierMachine {
                             break;
 
                         case 4:
-                            System.out.println("In progress");
+                            scanner.nextLine();
+                            System.out.println("Register new items");
+                            System.out.println("Enter the item quantity: ");
+                            String newQuantity = scanner.nextLine();
+                            System.out.println("Enter the item name: ");
+                            String newItemName = scanner.nextLine();
+                            int supplierId = currentSupplier.getSupplierId();
+
+                            try {
+                                supplierInterface.sRegisterItem(newQuantity, newItemName, supplierId);
+                                System.out.println("Item has been registered");
+                            }catch(Exception ex){
+                                ex.getMessage();
+                            }
                             break;
                     }
                 }
