@@ -98,6 +98,8 @@ public class SupplierMachine {
 
                     switch (option) {
                         case 1:
+                            ArrayList<Item> ItemList = new ArrayList<>();
+                            Item currentItem;
                             Item selectedItem;
                             try {
                                 HashMap<Integer, Item> items = supplierInterface.sViewItem(currentSupplier.getSupplierId());
@@ -106,16 +108,35 @@ public class SupplierMachine {
                                     break;
                                 }
                                 for (Map.Entry<Integer, Item> e : items.entrySet()) {
-                                    System.out.println(e.getKey() + ". " + e.getValue().getItemName());
+                                    //System.out.println(e.getKey() + ". " + e.getValue().getItemName());
+                                    ItemList.add(items.get(e.getKey()));
                                 }
+
+                                for(int i = 0; i < ItemList.size(); i++){
+                                    currentItem = ItemList.get(i);
+                                    System.out.println(i + 1 + ".\t" + currentItem.getItemName());
+                                }
+
                                 System.out.print("\nOption: ");
                                 int itemID = scanner.nextInt();
+
+                                if(itemID-1 > ItemList.size() || itemID-1 < 0){
+                                    System.out.println("Invalid Item!");
+                                    break;
+                                }
+                                else {
+                                    selectedItem = ItemList.get(itemID-1);
+                                }
+
+                                /*
                                 if(items.containsKey(itemID)) {
                                     selectedItem = items.get(itemID);
                                 } else {
                                     System.out.println("ItemID does not exist!");
                                     break;
                                 }
+                                 */
+
                             } catch (Exception e) {
                                 System.out.println(e + "\n");
                                 break;
@@ -123,8 +144,7 @@ public class SupplierMachine {
 
                             boolean y = true;
                             while (y) {
-                                System.out.println("\n\nID: " + selectedItem.getItemID()
-                                        + "\nName: " + selectedItem.getItemName()
+                                System.out.println("\n\nName: " + selectedItem.getItemName()
                                         + "\nQuantity: " + selectedItem.getItemQuantity());
                                 System.out.println("\n1. Edit name\n2. Edit quantity\n3. Delete item\n4. Back\n\n");
                                 System.out.print("Option: ");
