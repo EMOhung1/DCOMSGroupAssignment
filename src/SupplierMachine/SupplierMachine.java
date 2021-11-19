@@ -133,9 +133,10 @@ public class SupplierMachine {
                                     switch (option) {
                                         case 1:
                                             scanner.nextLine(); //dun remove dis oso
-                                            System.out.println("Enter new item name: ");
+                                            System.out.print("Enter new item name: ");
                                             String updateItemName = scanner.nextLine();
                                             try {
+                                                selectedItem.setItemName(updateItemName);
                                                 supplierInterface.sUpdateItemName(updateItemName, selectedItem.getItemID());
                                             } catch (Exception ex) {
                                                 ex.getMessage();
@@ -143,9 +144,10 @@ public class SupplierMachine {
                                             break;
                                         case 2:
                                             scanner.nextLine();
-                                            System.out.println("Enter new item quantity: ");
+                                            System.out.print("Enter new item quantity: ");
                                             int updateItemQuantity = scanner.nextInt();
                                             try{
+                                                selectedItem.setItemQuantity(updateItemQuantity);
                                                 supplierInterface.sUpdateItemQuantity(updateItemQuantity, selectedItem.getItemID());
                                             }catch(Exception ex){
                                                 ex.getMessage();
@@ -154,6 +156,7 @@ public class SupplierMachine {
                                         case 3:
                                             try{
                                                 supplierInterface.sDeleteItem(selectedItem.getItemID());
+                                                y = false;
                                             }catch(Exception ex){
                                                 ex.getMessage();
                                             }
@@ -237,9 +240,9 @@ public class SupplierMachine {
                         case 3:
                             scanner.nextLine(); //dun remove, idk why it wont work without dis
                             System.out.println("Register new items");
-                            System.out.println("Enter the item name: ");
+                            System.out.print("Enter the item name: ");
                             String newItemName = scanner.nextLine();
-                            System.out.println("Enter the item quantity: ");
+                            System.out.print("Enter the item quantity: ");
                             int newQuantity = scanner.nextInt();
                             int supplierId = currentSupplier.getSupplierId();
 
