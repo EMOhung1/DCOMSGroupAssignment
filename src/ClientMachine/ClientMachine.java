@@ -99,10 +99,13 @@ public class ClientMachine {
                     System.out.println("\n\n1. Search items\n2. View all items\n3. View cart\n4. View orders\n5. Logout\n\n");
                     System.out.print("Option: ");
 
+                    ArrayList<Item> ItemList = new ArrayList<>();
+                    Item currentItem;
                     int option = scanner.nextInt();
 
                     switch (option) {
                         case 1:
+
                             //search items
                             try {
                                 HashMap<Integer, Item> items = clientInterface.cViewItem();
@@ -113,16 +116,26 @@ public class ClientMachine {
 
                                 for (Map.Entry<Integer, Item> e : items.entrySet()) {
                                     if(e.getValue().getItemName().contains(search)) {
-                                        System.out.println(e.getKey() + ". " + e.getValue().getItemName());
+                                        //System.out.println(e.getKey() + ". " + e.getValue().getItemName());
+                                        ItemList.add(items.get(e.getKey()));
                                     }
                                 }
+
+                                for(int i = 0; i < ItemList.size(); i++){
+                                    currentItem = ItemList.get(i);
+                                    System.out.println(i + 1 + ".\t" + currentItem.getItemName());
+                                }
+
                                 System.out.print("\nOption: ");
                                 int itemID = scanner.nextInt();
-                                if(items.containsKey(itemID)) {
-                                    itemMenu(items.get(itemID));
-                                } else {
-                                    System.out.println("ItemID does not exist!");
+
+                                if(itemID-1 > ItemList.size() || itemID-1 < 0){
+                                    System.out.println("Invalid Item!");
                                 }
+                                else {
+                                    itemMenu(ItemList.get(itemID-1));
+                                }
+
                             } catch(Exception e) {
                                 System.out.println(e + "\n");
                             }
@@ -137,15 +150,31 @@ public class ClientMachine {
                                     break;
                                 }
                                 for (Map.Entry<Integer, Item> e : items.entrySet()) {
-                                    System.out.println(e.getKey() + ". " + e.getValue().getItemName());
+                                    //System.out.println(e.getKey() + ". " + e.getValue().getItemName());
+                                    ItemList.add(items.get(e.getKey()));
                                 }
+
+                                for(int i = 0; i < ItemList.size(); i++){
+                                    currentItem = ItemList.get(i);
+                                    System.out.println(i + 1 + ".\t" + currentItem.getItemName());
+                                }
+
                                 System.out.print("\nOption: ");
                                 int itemID = scanner.nextInt();
+
+                                if(itemID-1 > ItemList.size() || itemID-1 < 0){
+                                    System.out.println("Invalid Item!");
+                                }
+                                else {
+                                    itemMenu(ItemList.get(itemID-1));
+                                }
+                                /*
                                 if(items.containsKey(itemID)) {
                                     itemMenu(items.get(itemID));
                                 } else {
                                     System.out.println("ItemID does not exist!");
                                 }
+                                 */
 
                             } catch (Exception e) {
                                 System.out.println(e + "\n");
@@ -155,10 +184,10 @@ public class ClientMachine {
                         case 3:
                             //view cart
                             if(!cart.isEmpty()) {
-                                System.out.format("%n%-10s%-25s%-30s%-3s%n", "ItemID", "Item Name", "Supplier", "Quantity");
+                                System.out.format("%n%-25s%-30s%-3s%n", "Item Name", "Supplier", "Quantity");
                                 for (Map.Entry<Item, Integer> item : cart.entrySet()) {
-                                    System.out.format("%-10s%-25s%-30s%-3s%n",
-                                            item.getKey().getItemID(),
+                                    System.out.format("%-25s%-30s%-3s%n",
+                                            //item.getKey().getItemID(),
                                             item.getKey().getItemName(),
                                             item.getKey().getSupplierName(),
                                             item.getValue());
@@ -253,8 +282,7 @@ public class ClientMachine {
     public static void itemMenu(Item item) {
         boolean y = true;
         while(y) {
-            System.out.println("\n\nID: "+item.getItemID()
-                    +"\nName: "+item.getItemName()
+            System.out.println("\n\nName: "+item.getItemName()
                     +"\nSupplier: "+item.getSupplierName()
                     +"\nQuantity: "+item.getItemQuantity());
             System.out.println("\n1. Add to cart\n2. Back\n\n");
