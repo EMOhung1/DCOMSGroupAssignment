@@ -404,3 +404,37 @@
 2021-11-18 21:55:10 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (2) for userID 12
 2021-11-18 21:55:52 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (2) for userID 12
 2021-11-18 21:56:07 INFO   ServerMachine.Server sViewItem Supplier 192.168.0.141 requested a list of all items (1) for userID 12
+2021-11-19 12:04:16 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-19 12:04:16 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-19 12:04:28 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user supp2
+2021-11-19 13:26:03 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 2
+2021-11-19 13:26:15 INFO   ServerMachine.Server sRegisterItem Supplier 10.1.19.2 registered an item Hello
+2021-11-19 13:26:22 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (1) for userID 2
+2021-11-19 13:26:31 INFO   ServerMachine.Server sUpdateItemName Supplier 10.1.19.2 updated an item name 4
+2021-11-19 13:26:40 INFO   ServerMachine.Server sUpdateItemQuantity Supplier 10.1.19.2 updated an item quantity 4
+2021-11-19 13:26:47 INFO   ServerMachine.Server sDeleteItem Supplier 10.1.19.2 deleted an item 4
+2021-11-19 13:26:54 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 2
+2021-11-19 15:12:50 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-19 15:12:50 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-19 15:13:15 INFO   ServerMachine.Server checkClientDupe Client 10.1.19.2 checking for duplicated Username chihung
+2021-11-19 15:13:15 INFO   ServerMachine.Server clientInsert Client 10.1.19.2 registered a new user chihung
+2021-11-19 15:13:15 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chihung
+2021-11-19 15:13:25 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (1)
+2021-11-19 15:14:50 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user supp2
+2021-11-19 15:14:53 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 2
+2021-11-19 15:15:11 INFO   ServerMachine.Server sRegisterItem Supplier 10.1.19.2 registered an item Water Bottle
+2021-11-19 15:15:17 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (1) for userID 2
+2021-11-19 15:16:04 INFO   ServerMachine.Server sUpdateItemName Supplier 10.1.19.2 updated an item name 4
+2021-11-19 15:16:13 INFO   ServerMachine.Server sUpdateItemQuantity Supplier 10.1.19.2 updated an item quantity 4
+2021-11-19 15:16:32 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (1) for userID 2
+2021-11-19 15:17:50 INFO   ServerMachine.Server confirmOrder Supplier 10.1.19.2 confirmed an order 1
+2021-11-19 15:17:54 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (1) for userID 2
+2021-11-19 15:18:34 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chihung
+2021-11-19 15:18:38 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (2)
+2021-11-19 15:18:56 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (2)
+2021-11-19 15:19:16 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (2)
+2021-11-19 15:19:48 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (2)
+2021-11-19 15:20:12 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (2)
+2021-11-19 15:20:30 INFO   ServerMachine.Server purchaseItem Client 10.1.19.2 (chihung) purchased 3 items
+2021-11-19 15:20:36 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (1) made by userID 15
+2021-11-19 15:21:17 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (1) made by userID 15
