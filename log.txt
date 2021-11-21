@@ -440,3 +440,31 @@
 2021-11-21 14:43:47 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chihung
 2021-11-21 14:44:33 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user supp2
 2021-11-21 14:51:47 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chihung
+2021-11-21 15:16:22 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-21 15:16:22 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-21 15:16:38 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chihung
+2021-11-21 18:06:48 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-21 18:06:48 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-21 18:07:02 INFO   ServerMachine.Server checkClientDupe Client 10.1.19.2 checking for duplicated Username Tester
+2021-11-21 18:07:02 INFO   ServerMachine.Server clientInsert Client 10.1.19.2 registered a new user Tester
+2021-11-21 18:07:02 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user Tester
+2021-11-21 18:07:06 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (5)
+2021-11-21 18:08:10 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user Tester
+2021-11-21 18:08:17 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (5)
+2021-11-21 18:08:42 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (0) made by userID 16
+2021-11-21 18:09:03 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user supp2
+2021-11-21 18:09:06 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (1) for userID 2
+2021-11-21 18:09:24 INFO   ServerMachine.Server sUpdateItemName Supplier 10.1.19.2 updated an item name 6
+2021-11-21 18:09:28 INFO   ServerMachine.Server sUpdateItemQuantity Supplier 10.1.19.2 updated an item quantity 6
+2021-11-21 18:19:20 INFO   ServerMachine.Database init Database initialized successfully
+2021-11-21 18:19:20 INFO   ServerMachine.ServerRegistry main Server registry started successfully
+2021-11-21 18:19:54 INFO   ServerMachine.Server clientLogin Client 10.1.19.2 logged in as user chihung
+2021-11-21 18:19:57 INFO   ServerMachine.Server cViewItem Client 10.1.19.2 requested a list of all items (5)
+2021-11-21 18:20:07 INFO   ServerMachine.Server cViewOrders Client 10.1.19.2 requested a list of all orders (2) made by userID 15
+2021-11-21 18:20:31 INFO   ServerMachine.Server supplierLogin Supplier 10.1.19.2 logged in as user supp2
+2021-11-21 18:20:34 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 2
+2021-11-21 18:20:36 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (1) for userID 2
+2021-11-21 18:20:39 INFO   ServerMachine.Server sDeleteItem Supplier 10.1.19.2 deleted an item 6
+2021-11-21 18:20:41 INFO   ServerMachine.Server sViewItem Supplier 10.1.19.2 requested a list of all items (0) for userID 2
+2021-11-21 18:20:42 INFO   ServerMachine.Server sViewOrders Supplier 10.1.19.2 requested a list of all orders (0) for userID 2
+2021-11-21 18:21:05 INFO   ServerMachine.Server sRegisterItem Supplier 10.1.19.2 registered an item Water

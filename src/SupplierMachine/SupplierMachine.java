@@ -1,27 +1,20 @@
 package SupplierMachine;
 
-import ClientMachine.ClientInterface;
-import ServerMachine.Client;
 import ServerMachine.Item;
 import ServerMachine.Order;
 import ServerMachine.Supplier;
 
-import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.util.*;
 
 public class SupplierMachine {
-    private static SupplierInterface supplierInterface;
     private static final Scanner scanner = new Scanner(System.in);
-
     private static Supplier currentSupplier;
-    private static Supplier checkDupe;
-
     private static boolean loggedIn = false;
 
     public static void main(String[] args) {
+        SupplierInterface supplierInterface;
+        Supplier checkDupe;
         try{
             supplierInterface = (SupplierInterface) Naming.lookup("rmi://localhost:5000/Connect");
         } catch(Exception e) {
@@ -62,7 +55,7 @@ public class SupplierMachine {
                         }
                         else{
                             System.out.println("\nDuplicate Username Detected, Please Provide A Unique Username\n");
-                            checkDupe = null;
+
                         }
                     }catch(Exception ex){System.out.println(ex.getMessage());}
                 }
@@ -90,20 +83,19 @@ public class SupplierMachine {
                 System.out.print("\nWelcome, " + currentSupplier.getuserName());  //replace with username
 
                 while (loggedIn) {
-                    boolean view = false;
                     System.out.println("\n\n1. View items\n2. View orders\n3. Register items\n4. Logout\n\n"); // adding register items as option
                     System.out.print("Option: ");
 
                     int option = scanner.nextInt();
 
                     switch (option) {
-                        case 1:
+                        case 1 -> {
                             ArrayList<Item> ItemList = new ArrayList<>();
                             Item currentItem;
                             Item selectedItem;
                             try {
                                 HashMap<Integer, Item> items = supplierInterface.sViewItem(currentSupplier.getSupplierId());
-                                if(items.isEmpty()) {
+                                if (items.isEmpty()) {
                                     System.out.println("No items found!");
                                     break;
                                 }
@@ -112,7 +104,7 @@ public class SupplierMachine {
                                     ItemList.add(items.get(e.getKey()));
                                 }
 
-                                for(int i = 0; i < ItemList.size(); i++){
+                                for (int i = 0; i < ItemList.size(); i++) {
                                     currentItem = ItemList.get(i);
                                     System.out.println(i + 1 + ".\t" + currentItem.getItemName());
                                 }
@@ -120,28 +112,17 @@ public class SupplierMachine {
                                 System.out.print("\nOption: ");
                                 int itemID = scanner.nextInt();
 
-                                if(itemID-1 > ItemList.size() || itemID-1 < 0){
+                                if (itemID - 1 > ItemList.size() || itemID - 1 < 0) {
                                     System.out.println("Invalid Item!");
                                     break;
-                                }
-                                else {
-                                    selectedItem = ItemList.get(itemID-1);
-                                }
-
-                                /*
-                                if(items.containsKey(itemID)) {
-                                    selectedItem = items.get(itemID);
                                 } else {
-                                    System.out.println("ItemID does not exist!");
-                                    break;
+                                    selectedItem = ItemList.get(itemID - 1);
                                 }
-                                 */
 
                             } catch (Exception e) {
                                 System.out.println(e + "\n");
                                 break;
                             }
-
                             boolean y = true;
                             while (y) {
                                 System.out.println("\n\nName: " + selectedItem.getItemName()
@@ -150,58 +131,60 @@ public class SupplierMachine {
                                 System.out.print("Option: ");
 
                                 option = scanner.nextInt();
-                                    switch (option) {
-                                        case 1:
-                                            scanner.nextLine(); //dun remove dis oso
-                                            System.out.print("Enter new item name: ");
-                                            String updateItemName = scanner.nextLine();
-                                            try {
-                                                selectedItem.setItemName(updateItemName);
-                                                supplierInterface.sUpdateItemName(updateItemName, selectedItem.getItemID());
-                                            } catch (Exception ex) {
-                                                ex.getMessage();
-                                            }
-                                            break;
-                                        case 2:
-                                            scanner.nextLine();
-                                            System.out.print("Enter new item quantity: ");
-                                            int updateItemQuantity = scanner.nextInt();
-                                            try{
-                                                selectedItem.setItemQuantity(updateItemQuantity);
-                                                supplierInterface.sUpdateItemQuantity(updateItemQuantity, selectedItem.getItemID());
-                                            }catch(Exception ex){
-                                                ex.getMessage();
-                                            }
-                                            break;
-                                        case 3:
-                                            try{
-                                                supplierInterface.sDeleteItem(selectedItem.getItemID());
-                                                y = false;
-                                            }catch(Exception ex){
-                                                ex.getMessage();
-                                            }
-                                            break;
-                                        case 4:
+                                switch (option) {
+                                    case 1:
+                                        scanner.nextLine(); //dun remove dis oso
+                                        System.out.print("Enter new item name: ");
+                                        String updateItemName = scanner.nextLine();
+                                        try {
+                                            selectedItem.setItemName(updateItemName);
+                                            supplierInterface.sUpdateItemName(updateItemName, selectedItem.getItemID());
+                                        } catch (Exception ex) {
+                                            ex.getStackTrace();
+                                        }
+                                        break;
+                                    case 2:
+                                        scanner.nextLine();
+                                        System.out.print("Enter new item quantity: ");
+                                        int updateItemQuantity = scanner.nextInt();
+                                        try {
+                                            selectedItem.setItemQuantity(updateItemQuantity);
+                                            supplierInterface.sUpdateItemQuantity(updateItemQuantity, selectedItem.getItemID());
+                                        } catch (Exception ex) {
+                                            ex.getStackTrace();
+                                        }
+                                        break;
+                                    case 3:
+                                        try {
+                                            supplierInterface.sDeleteItem(selectedItem.getItemID());
                                             y = false;
-                                            break;
+                                        } catch (Exception ex) {
+                                            ex.getStackTrace();
+                                        }
+                                        break;
+                                    case 4:
+                                        y = false;
+                                        break;
                                 }
                             }
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             //view orders
                             HashMap<Integer, Order> orders;
                             try {
                                 orders = supplierInterface.sViewOrders(currentSupplier.getSupplierId());
-                            } catch(Exception e) {
-                                System.out.println(e.getMessage());break;}
-                            if(orders.isEmpty()) {
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                                break;
+                            }
+                            if (orders.isEmpty()) {
                                 System.out.println("No orders found!");
                                 break;
                             }
                             System.out.format("%n%-11s%-25s%-30s%-30s%-10s%n", "OrderID", "Date", "Client", "Address", "No. of items");
                             for (Map.Entry<Integer, Order> o : orders.entrySet()) {
                                 int sum = 0;
-                                for(int i: o.getValue().getItemList().values()) {
+                                for (int i : o.getValue().getItemList().values()) {
                                     sum += i;
                                 }
                                 System.out.format("%1$-10s %2$tY-%2$tm-%2$td %2$tH:%2$tM:%2$tS %3$-4s %4$-29s %5$-29s %6$-10s%n",
@@ -212,26 +195,23 @@ public class SupplierMachine {
                                         o.getValue().getAddress(),
                                         sum);
                             }
-
                             System.out.print("\nOption: ");
                             int orderID = scanner.nextInt();
                             Order order;
-                            if(orders.containsKey(orderID)) {
+                            if (orders.containsKey(orderID)) {
                                 order = orders.get(orderID);
                             } else {
                                 System.out.println("OrderID does not exist!");
                                 break;
                             }
-
                             System.out.println("\nOrderID: " + order.getOrderID());
                             System.out.format("%1$s %2$tY-%2$tm-%2$td %2$tH:%2$tM:%2$tS%n", "Order date: ", order.getCreationDate());
                             System.out.println("Client: " + order.getClientUserName());
                             System.out.println("Address: " + order.getAddress());
-
                             boolean confirmed = false;
                             System.out.println("\nItems:");
                             System.out.format("%-10s%-25s%-15s%-15s%n", "ItemID", "Item Name", "Quantity", "Confirmed");
-                            List<Integer> itemIdList = new ArrayList<Integer>();
+                            List<Integer> itemIdList = new ArrayList<>();
                             for (Map.Entry<Item, Integer> item : order.getItemList().entrySet()) {
                                 System.out.format("%-10s%-25s%-15s%-15s%n",
                                         item.getKey().getItemID(),
@@ -242,43 +222,41 @@ public class SupplierMachine {
                                 confirmed = item.getKey().getConfirm();
                                 itemIdList.add(item.getKey().getItemID());
                             }
-
-                            if(!confirmed) {
+                            if (!confirmed) {
                                 System.out.print("\nConfirm all items? (y/n): ");
                                 scanner.nextLine();
                                 String confirm = scanner.nextLine();
-                                if(confirm.equals("y")) {
+                                if (confirm.equals("y")) {
                                     try {
-                                        for (int itemId : itemIdList){
+                                        for (int itemId : itemIdList) {
                                             supplierInterface.confirmOrder(itemId, order.getOrderID());
                                         }
-                                    }catch(Exception ex){System.out.println(ex.getMessage());}
+                                    } catch (Exception ex) {
+                                        System.out.println(ex.getMessage());
+                                    }
                                 }
                             }
-
-                            break;
-                        case 3:
-                            scanner.nextLine(); //dun remove, idk why it wont work without dis
+                        }
+                        case 3 -> {
+                            scanner.nextLine();
                             System.out.println("Register new items");
                             System.out.print("Enter the item name: ");
                             String newItemName = scanner.nextLine();
                             System.out.print("Enter the item quantity: ");
                             int newQuantity = scanner.nextInt();
                             int supplierId = currentSupplier.getSupplierId();
-
                             try {
                                 supplierInterface.sRegisterItem(newQuantity, newItemName, supplierId);
                                 System.out.println("Item has been registered.");
-                            }catch(Exception ex){
-                                ex.getMessage();
+                            } catch (Exception ex) {
+                                ex.getStackTrace();
                             }
-                            break;
-                        case 4:
-
+                        }
+                        case 4 -> {
                             scanner.nextLine();
                             currentSupplier = null;
                             loggedIn = false;
-                            break;
+                        }
                     }
                 }
             }

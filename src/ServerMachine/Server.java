@@ -3,12 +3,8 @@ package ServerMachine;
 import ClientMachine.ClientInterface;
 import SupplierMachine.SupplierInterface;
 
-import java.io.Serializable;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.rmi.server.ServerNotActiveException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,17 +29,19 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
             if(client.getUserName() != null && client.getPassword() != null){
                 logger.log(Level.INFO, "Client " + getClientHost() + " logged in as user " + userName);
             }
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         return client;
-        //You need to return the user object saved, so when James login it returns James' account and not someone else, this is an example.
-        //After creating a method, create an empty version of the method at ServerInterface.
     }
 
     public void clientInsert(String userName, String password){
         try {
             logger.log(Level.INFO, "Client " + getClientHost() + " registered a new user " + userName);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         Database.insertClient(userName,password);
     }
@@ -51,7 +49,9 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
     public Client checkClientDupe(String userName){
         try {
             logger.log(Level.INFO, "Client " + getClientHost() + " checking for duplicated Username " + userName);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         return Database.clientCheckDupe(userName);
     }
@@ -60,7 +60,9 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         HashMap<Integer, Item> items = Database.getItems();
         try {
             logger.log(Level.INFO, "Client " + getClientHost() + " requested a list of all items (" + items.size() + ")");
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         return items;
     }
@@ -72,7 +74,9 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         }
         try {
             logger.log(Level.INFO, "Client " + getClientHost() + " (" + client.getUserName() + ") purchased " + sum + " items");
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         Database.insertOrder(client, address, cart);
     }
@@ -80,8 +84,13 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
     public HashMap<Integer, Order> cViewOrders(int userID) {
         HashMap<Integer, Order> orders = Database.getOrders("client", userID);
         try {
-            logger.log(Level.INFO, "Client " + getClientHost() + " requested a list of all orders (" + orders.size() + ") made by userID " + userID);
-        } catch(Exception e) {}
+            if(orders != null){
+                logger.log(Level.INFO, "Client " + getClientHost() + " requested a list of all orders (" + orders.size() + ") made by userID " + userID);
+            }
+
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         return orders;
     }
@@ -95,7 +104,9 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
             if(supplier.getuserName() != null && supplier.getPassword() != null){
                 logger.log(Level.INFO, "Supplier " + getClientHost() + " logged in as user " + supplierName);
             }
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         return supplier;
         //You need to return the user object saved, so when James login it returns James' account and not someone else, this is an example.
@@ -105,7 +116,9 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
     public void supplierInsert(String userName, String password){
         try {
             logger.log(Level.INFO, "Supplier " + getClientHost() + " registered a new user " + userName);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         Database.insertSupplier(userName,password);
     }
@@ -113,7 +126,9 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
     public Supplier checkSupplierDupe(String userName){
         try {
             logger.log(Level.INFO, "Supplier " + getClientHost() + " checking for duplicated Username " + userName);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         return Database.supplierCheckDupe(userName);
     }
@@ -122,7 +137,9 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         HashMap<Integer, Item> items = Database.getItems(userID);
         try {
             logger.log(Level.INFO, "Supplier " + getClientHost() + " requested a list of all items (" + items.size() + ") for userID " + userID);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         return items;
     }
@@ -130,8 +147,12 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
     public HashMap<Integer, Order> sViewOrders(int userID) {
         HashMap<Integer, Order> orders = Database.getOrders("supplier", userID);
         try {
-            logger.log(Level.INFO, "Supplier " + getClientHost() + " requested a list of all orders (" + orders.size() + ") for userID " + userID);
-        } catch(Exception e) {}
+            if(orders != null){
+                logger.log(Level.INFO, "Supplier " + getClientHost() + " requested a list of all orders (" + orders.size() + ") for userID " + userID);
+            }
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
 
         return orders;
     }
@@ -139,7 +160,9 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
     public void confirmOrder(int itemID, int orderID){
         try {
             logger.log(Level.INFO, "Supplier " + getClientHost() + " confirmed an order " + orderID);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
         Database.orderConfirm(itemID, orderID);
     }
 
@@ -147,28 +170,36 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
         Database.registerItem(itemQuantity, itemName, supplierID);
         try {
             logger.log(Level.INFO, "Supplier " + getClientHost() + " registered an item " + itemName);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
     }
 
     public void sUpdateItemName(String updateItemName, int itemID){
         Database.updateItemName(updateItemName, itemID);
         try {
             logger.log(Level.INFO, "Supplier " + getClientHost() + " updated an item name " + itemID);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
     }
 
     public void sUpdateItemQuantity(int updateItemQuantity, int itemID){
         Database.updateQuantity(updateItemQuantity, itemID);
         try {
             logger.log(Level.INFO, "Supplier " + getClientHost() + " updated an item quantity " + itemID);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
     }
 
     public void sDeleteItem(int itemID){
         Database.deleteItem(itemID);
         try {
             logger.log(Level.INFO, "Supplier " + getClientHost() + " deleted an item " + itemID);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
     }
 
 }

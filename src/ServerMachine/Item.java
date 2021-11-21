@@ -56,10 +56,7 @@ public class Item implements Serializable {
             return false;
         }
         final Item other = (Item) o;
-        if (this.itemID != other.itemID) {
-            return false;
-        }
-        return true;
+        return this.itemID == other.itemID;
     }
 
     @Override

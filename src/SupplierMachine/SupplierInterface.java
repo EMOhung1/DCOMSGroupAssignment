@@ -1,13 +1,11 @@
 package SupplierMachine;
 
-import ServerMachine.Client;
 import ServerMachine.Item;
 import ServerMachine.Order;
 import ServerMachine.Supplier;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface SupplierInterface extends Remote {

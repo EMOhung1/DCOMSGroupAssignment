@@ -4,30 +4,22 @@ import ServerMachine.Client;
 import ServerMachine.Item;
 import ServerMachine.Order;
 
-import java.io.Serializable;
-import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class ClientMachine {
-    private static ClientInterface clientInterface;
     private static final Scanner scanner = new Scanner(System.in);
     private static boolean loggedIn = false;
-
     private static Client currentClient;
-    private static Client checkDupe;
-
     private static HashMap<Item, Integer> cart;
 
     public static void main(String[] args){
+        ClientInterface clientInterface;
+        Client checkDupe;
+
         try{
             clientInterface = (ClientInterface) Naming.lookup("rmi://localhost:5000/Connect");
         } catch(Exception e) {
@@ -67,7 +59,7 @@ public class ClientMachine {
                         }
                         else{
                             System.out.println("\nDuplicate Username Detected, Please Provide A Unique Username\n");
-                            checkDupe = null;
+
                         }
                     }catch(Exception ex){System.out.println(ex.getMessage());}
                 }else
@@ -142,7 +134,7 @@ public class ClientMachine {
                             break;
                         case 2:
                             //view all items
-                            Item selectedItem;
+
                             try {
                                 HashMap<Integer, Item> items = clientInterface.cViewItem();
                                 if(items.isEmpty()) {
@@ -168,13 +160,6 @@ public class ClientMachine {
                                 else {
                                     itemMenu(ItemList.get(itemID-1));
                                 }
-                                /*
-                                if(items.containsKey(itemID)) {
-                                    itemMenu(items.get(itemID));
-                                } else {
-                                    System.out.println("ItemID does not exist!");
-                                }
-                                 */
 
                             } catch (Exception e) {
                                 System.out.println(e + "\n");
@@ -290,23 +275,21 @@ public class ClientMachine {
 
             int option = scanner.nextInt();
 
-            switch(option) {
-                case 1:
+            switch (option) {
+                case 1 -> {
                     //add to cart
                     System.out.print("Quantity: ");
                     int qty = scanner.nextInt();
-                    if(qty > item.getItemQuantity() || (cart.containsKey(item) && qty+cart.get(item) > item.getItemQuantity())) {
+                    if (qty > item.getItemQuantity() || (cart.containsKey(item) && qty + cart.get(item) > item.getItemQuantity())) {
                         System.out.println("Quantity exceeds available item quantity!");
-                    } else if(qty<1) {
+                    } else if (qty < 1) {
                         System.out.println("Invalid quantity!");
                     } else {
                         cart.put(item, cart.getOrDefault(item, 0) + qty);
                     }
                     y = false;
-                    break;
-                case 2:
-                    y = false;
-                    break;
+                }
+                case 2 -> y = false;
             }
         }
     }
