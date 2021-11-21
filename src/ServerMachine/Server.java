@@ -28,11 +28,14 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
     //Client methods:
 
     public Client clientLogin(String userName, String password) {
+        Client client = Database.clientSearch(userName,password);
         try {
-            logger.log(Level.INFO, "Client " + getClientHost() + " logged in as user " + userName);
+            if(client.getUserName() != null && client.getPassword() != null){
+                logger.log(Level.INFO, "Client " + getClientHost() + " logged in as user " + userName);
+            }
         } catch(Exception e) {}
 
-        return Database.clientSearch(userName,password);
+        return client;
         //You need to return the user object saved, so when James login it returns James' account and not someone else, this is an example.
         //After creating a method, create an empty version of the method at ServerInterface.
     }
@@ -87,11 +90,14 @@ public class Server extends UnicastRemoteObject implements ClientInterface, Supp
     //Supplier methods:
 
     public Supplier supplierLogin(String supplierName, String password){
+        Supplier supplier = Database.supplierSearch(supplierName,password);
         try {
-            logger.log(Level.INFO, "Supplier " + getClientHost() + " logged in as user " + supplierName);
+            if(supplier.getuserName() != null && supplier.getPassword() != null){
+                logger.log(Level.INFO, "Supplier " + getClientHost() + " logged in as user " + supplierName);
+            }
         } catch(Exception e) {}
 
-        return Database.supplierSearch(supplierName,password);
+        return supplier;
         //You need to return the user object saved, so when James login it returns James' account and not someone else, this is an example.
         //After creating a method, create an empty version of the method at ServerInterface.
     }
